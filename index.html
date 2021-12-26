@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Befunge interpreter</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1 class="header">
+      Befunge 93 Interpreter
+
+      <div class="buttons">
+        <div class="info" title="Informations">
+          <i class="fas fa-info"></i>
+          <div class="content" title="">
+            <div class="close"><i class="far fa-times-circle"></i></div>
+            <h3>BeFunge-93</h3>
+            <hr />
+            <p>
+              BeFunge-93 jest pierwszą wersją ezoterycznego języka programowania BeFunge stworzonego przez Chris'a Presseya w 1993 roku, którego celem było stworzenie języka o
+              możliwie najtrudniejszym do napisania kompilatorze.
+            </p>
+            <p>
+              Kod jest ułożony w 2-wymiarowej tablicy instrukcji o wymiarach 80x25 i wykonywany poprzez poruszanie się w dowolnym kierunku wykonując instrukcję zanjdującą się
+              w obecnym miejscu tablicy. BeFunge-93 przechowuje dane na pojedyńczym stosie, lecz może również zapisywać i odczytywać zawartość dowolnej komórki tablicy, w
+              wyniku czego kod programu może byc samomodyfikowalny.
+            </p>
+          </div>
+        </div>
+
+        <div class="instructions" title="Instructions">
+          <i class="fas fa-bars"></i>
+          <div class="content" title="">
+            <div class="close"><i class="far fa-times-circle"></i></div>
+            <h3>Instrukcje</h3>
+            <hr />
+            <table>
+              <tr>
+                <th>Komenda</th>
+                <th>Opis</th>
+              </tr>
+              <tr>
+                <td>0 - 9</td>
+                <td>wkłada na stos odpowiedni numer</td>
+              </tr>
+              <tr>
+                <td>+</td>
+                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B + A</td>
+              </tr>
+              <tr>
+                <td>-</td>
+                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B − A</td>
+              </tr>
+              <tr>
+                <td>*</td>
+                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B * A</td>
+              </tr>
+              <tr>
+                <td>/</td>
+                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B / A zaokrągloną w dół</td>
+              </tr>
+              <tr>
+                <td>%</td>
+                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos resztę z dzielenia całkowitego B / A</td>
+              </tr>
+              <tr>
+                <td>!</td>
+                <td>ściąga ze stosu wartość A, jeśli jest równa 0 wkłada na stos wartość 1, w przeciwnym wypadku 0</td>
+              </tr>
+              <tr>
+                <td>`</td>
+                <td>ściąga ze stosu kolejno A oraz B, jeśli B > A wkłada na stos wartość 1, w przeciwnym wypadku 0</td>
+              </tr>
+              <tr>
+                <td>></td>
+                <td>ustawia kierunek wykonywania programu w prawo</td>
+              </tr>
+              <tr>
+                <td><</td>
+                <td>ustawia kierunek wykonywania programu w lewo</td>
+              </tr>
+              <tr>
+                <td>^</td>
+                <td>ustawia kierunek wykonywania programu do góry</td>
+              </tr>
+              <tr>
+                <td>v</td>
+                <td>ustawia kierunek wykonywania programu do dółu</td>
+              </tr>
+              <tr>
+                <td>?</td>
+                <td>ustawia losowy kierunek wykonywania programu</td>
+              </tr>
+              <tr>
+                <td>_</td>
+                <td>ściąga ze stosu wartość A, jeśli A jest równe 0 ustawia kierunek w prawo, w przeciwnym wypadku w lewo</td>
+              </tr>
+              <tr>
+                <td>|</td>
+                <td>ściąga ze stosu wartość A, jeśli A jest równe 0 ustawia kierunek do dołu, w przeciwnym wypadku do góry</td>
+              </tr>
+              <tr>
+                <td>"</td>
+                <td>przełącza czytanie znaków (wkłada na stos wartości ASCII napotkanych znaków aż do następnego ")</td>
+              </tr>
+              <tr>
+                <td>:</td>
+                <td>duplikuje wartośc na szczycie stosu</td>
+              </tr>
+              <tr>
+                <td>\</td>
+                <td>zamienia miejscami dwie wartości na szczycie stosu</td>
+              </tr>
+              <tr>
+                <td>$</td>
+                <td>usuwa wartość ze szczytu stosu</td>
+              </tr>
+              <tr>
+                <td>.</td>
+                <td>ściąga ze stosu wartośc A i wypisuje ją w konsoli jako numer</td>
+              </tr>
+              <tr>
+                <td>,</td>
+                <td>ściąga ze stosu wartośc A i wypisuje ją w konsoli jako znak ASCII</td>
+              </tr>
+              <tr>
+                <td>#</td>
+                <td>pomija następną napotkaną instrukcje w bieżącym kierunku</td>
+              </tr>
+              <tr>
+                <td>g</td>
+                <td>ściąga ze stosu kolejno Y i X, następnie wkłada na stos wartość ASCII znaku w komórce tabeli o współrzędnych [Y, X]</td>
+              </tr>
+              <tr>
+                <td>p</td>
+                <td>ściąga ze stosu kolejno Y, X i V, następnie zmienia znak w komórce tabeli o współrzędnych [Y, X] na znak ASCII o wartości V</td>
+              </tr>
+              <tr>
+                <td>&</td>
+                <td>pobiera od użytkownika liczbę w konsoli i wkłada ją na stos</td>
+              </tr>
+              <tr>
+                <td>~</td>
+                <td>pobiera od użytkownika znak w konsoli i wkłada jego wartość ASCII na stos</td>
+              </tr>
+              <tr>
+                <td>@</td>
+                <td>kończy działanie programu</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="settings" title="Settings">
+          <i class="fas fa-cog"></i>
+          <div class="content" title="">
+            <div class="close"><i class="far fa-times-circle"></i></div>
+            <h3>Ustawienia</h3>
+            <hr />
+            <div>Szybkość wskaźnika</div>
+            <input type="range" min="1" max="120" value="120" step="1" />
+            <label>120</label>
+          </div>
+        </div>
+      </div>
+    </h1>
+    <div class="grid" title="Wciśnij lewy przycisk myszy aby dodać punkt przerwania"></div>
+
+    <div class="interface">
+      <div class="code">
+        <h5>Code</h5>
+        <textarea cols="80" title="Zaznacz tekst i wciśnij prawy przycisk myszki aby go odwrócić">"!dlrow ,olleH",,,,,,,,,,,,,@</textarea>
+      </div>
+
+      <div class="stack">
+        <h5>Stack</h5>
+        <textarea class="scroll" cols="5" disabled></textarea>
+      </div>
+
+      <div class="console">
+        <h5>Console</h5>
+        <textarea readonly></textarea>
+
+        <div class="buttons">
+          <button class="init">Init</button>
+          <button class="run">Run</button>
+          <button class="step">Step</button>
+          <button class="stop">Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/step.js"></script>
+    <script type="text/javascript" src="js/global.js"></script>
+    <script type="text/javascript" src="js/grid.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script type="text/javascript" src="js/stack.js"></script>
+    <script type="text/javascript" src="js/console.js"></script>
+  </body>
+</html>
