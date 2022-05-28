@@ -13,6 +13,7 @@ let console_value = "";
 let text_mode = false;
 let skip = false;
 let input = 0;
+let input_length = 0;
 let move_x = 1;
 let move_y = 0;
 let pos = {

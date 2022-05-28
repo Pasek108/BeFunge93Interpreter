@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Befunge interpreter</title>
 
+    <link rel="shortcut icon" href="favicon.ico"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
     <link rel="stylesheet" href="index.css" />
   </head>
@@ -29,6 +30,38 @@
               w obecnym miejscu tablicy. BeFunge-93 przechowuje dane na pojedyńczym stosie, lecz może również zapisywać i odczytywać zawartość dowolnej komórki tablicy, w
               wyniku czego kod programu może byc samomodyfikowalny.
             </p>
+
+            <h3>Przykładowe programy</h3>
+            <hr />
+            <details>
+              <summary>Fizz buzz</summary>
+              <pre>
+>&::3%#v_" zzif",,,,,v
+ v     <             <
+ > 5%#v_" zzub",,,,,v
+^,+19.<             <
+             </pre>
+            </details>
+
+            <details>
+              <summary>Dzielniki liczby</summary>
+              <pre>
+&10p1.2v
+ v\g01:< >" ",.@
+ %     ^_^#  -\<
+v_" ",:.>1+:10g^
+>       ^
+             </pre>
+            </details>
+
+            <details>
+              <summary>N-ty wyraz ciągu 2<sup>n + 1</sup> - 3</summary>
+              <pre>
+&:00p0`!  #v_001p102pv
+v"błąd n<1"<         >01g1+:01p00g1-`!#v_02g.@
+>,,,,,,,,,@          ^       p20+3*2g20<
+             </pre>
+            </details>
           </div>
         </div>
 

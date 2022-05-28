@@ -11,8 +11,13 @@ function acceptInput(e) {
     readInput();
     console_textarea.readOnly = true;
     input = 0;
+    input_length = 0;
     if (is_running) interval = window.requestAnimationFrame(step);
+  } else if (e.code === "Backspace" && input) {
+    if (input_length <= 0) e.preventDefault();
+    else input_length--;
   }
+  else if (input) input_length++;
 }
 
 function readInput() {
