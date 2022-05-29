@@ -1,5 +1,5 @@
 # BeFunge 93 Interpreter
-Interpreter ezoterycznego języka BeFunge 93, napisany na podstawie jego [dokumentacji](https://github.com/catseye/Befunge-93/blob/master/doc/Befunge-93.markdown) oraz wzorowany na [qiao befunge93 interpreter](http://qiao.github.io/javascript-playground/visual-befunge93-interpreter/) 
+Interpreter ezoterycznego języka BeFunge 93, napisany na podstawie jego [dokumentacji](https://github.com/catseye/Befunge-93/blob/master/doc/Befunge-93.markdown), wzorowany na [qiao befunge93 interpreter](http://qiao.github.io/javascript-playground/visual-befunge93-interpreter/) 
 
 ## Funkcje
 * Pisanie oraz wykonywanie programów w języku BeFunge93
