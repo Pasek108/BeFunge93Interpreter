@@ -1,21 +1,98 @@
 "use strict";
 
-const stack_textarea = document.querySelector(".stack textarea");
+class Stack {
+  #container = null;
+  #stack = [];
 
-function putOnStack(value) {
-  stack_textarea.value = `${value}\n` + stack_textarea.value;
-  stack.push(value);
-}
+  constructor(container) {
+    this.#container = container;
+  }
 
-function getFromStack() {
-  if (stack.length === 0) return 0;
+  /* -------------------------- private methods -------------------------- */
 
-  const value = stack[stack.length - 1];
-  stack.pop();
+  /* -------------------------- public methods -------------------------- */
+  put(value) {
+    this.#container.value = `${value}\n` + this.#container.value;
+    this.#stack.push(value);
+  }
 
-  let stack_text = stack_textarea.value.split("\n");
-  stack_text.shift();
-  stack_textarea.value = stack_text.join("\n");
+  get() {
+    if (this.#stack.length === 0) return 0;
 
-  return value;
+    const value = this.#stack.pop();
+
+    let stack_text = this.#container.value.split("\n");
+    stack_text.shift();
+    this.#container.value = stack_text.join("\n");
+
+    return value;
+  }
+
+  add() {
+    const a = this.get();
+    const b = this.get();
+
+    this.put(b + a)
+  }
+
+  substract() {
+    const a = this.get();
+    const b = this.get();
+
+    this.put(b - a)
+  }
+
+  multiply() {
+    const a = this.get();
+    const b = this.get();
+
+    this.put(b * a)
+  }
+
+  divide() {
+    const a = this.get();
+    const b = this.get();
+
+    this.put(a ? Math.floor(b / a) : NaN);
+  }
+
+  modulo() {
+    const a = this.get();
+    const b = this.get();
+
+    this.put(b % a);
+  }
+
+  swap() {
+    const a = this.get();
+    const b = this.get();
+
+    this.put(a);
+    this.put(b);
+  }
+
+  duplicate() {
+    const a = this.get();
+
+    this.put(a);
+    this.put(a);
+  }
+
+  negate() {
+    const a = this.get();
+
+    this.put(+!a);
+  }
+
+  compare() {
+    const a = this.get();
+    const b = this.get();
+
+    this.put(+(b > a))
+  }
+
+  clear() {
+    this.#stack = [];
+    this.#container.value = "";
+  }
 }

@@ -1,0 +1,454 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  scroll-behavior: smooth;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #2e5a81 0%, #283e51 100%);
+  color: whitesmoke;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  margin: 0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #1a71e4;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+.disclaimer {
+  display: none;
+}
+/* ------ header ------ */
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+  margin: 0 0 1rem 0;
+  font-weight: normal;
+  font-size: 2rem;
+}
+.header > span {
+  min-width: 19rem;
+  font-family: fantasy;
+}
+.header .lang {
+  background-color: #00000037;
+  background-image: url("/pl.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 51% 50%;
+  min-width: 2.5rem;
+  height: 1.75rem;
+  margin: 0.25rem 0.5rem 0 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.header .nyancat-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #00000037;
+  height: 2.5rem;
+  width: 2.8rem;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid black;
+  border-radius: 0.4rem;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  transition: width 1s;
+}
+.header .nyancat-menu::-webkit-scrollbar {
+  display: initial;
+  width: 0;
+  height: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.header .nyancat-menu:hover .button,
+.header .nyancat-menu.active .button {
+  background-color: #fb59e3;
+}
+.header .nyancat-menu.active {
+  width: 19.7rem;
+}
+.header .nyancat-menu .button {
+  position: absolute;
+  background-color: #656565;
+  background-image: url("/nyan_cats/nyancat_icon.png");
+  background-repeat: no-repeat;
+  background-size: 70% 65%;
+  background-position: 51% 50%;
+  min-width: 2.8rem;
+  min-height: 1.5rem;
+  padding: 0.4rem 0 0.25rem 0;
+  margin-left: -1px;
+  border: 1px solid black;
+  border-radius: 0.4rem;
+  text-align: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.header .nyancat-menu .button i {
+  visibility: hidden;
+}
+.header .nyancat-menu .content {
+  position: static;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  z-index: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: 2.5rem;
+  padding: 0;
+  min-width: 19.8rem;
+  margin: 0 0.5rem 0 2.6rem;
+}
+.header .nyancat-menu .content div {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 51% 50%;
+  height: 2.5rem;
+  min-width: 2.8rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+.header .nyancat-menu .content div:hover,
+.header .nyancat-menu .content div.active {
+  background-color: #00000037;
+}
+.header .nyancat-menu .content .default {
+  background-image: url("/nyan_cats/default/nyancat_default.png");
+}
+.header .nyancat-menu .content .rasta {
+  background-image: url("/nyan_cats/rasta/nyancat_rasta.png");
+}
+.header .nyancat-menu .content .gameboy {
+  background-image: url("/nyan_cats/gameboy/nyancat_gameboy.png");
+}
+.header .nyancat-menu .content .mexican {
+  background-image: url("/nyan_cats/mexican/nyancat_mexican.png");
+  background-size: 100% 72%;
+}
+.header .nyancat-menu .content .japanese {
+  background-image: url("/nyan_cats/japanese/nyancat_japanese.png");
+}
+.header .nyancat-menu .content .christmas {
+  background-image: url("/nyan_cats/christmas/nyancat_christmas.png");
+}
+.header .buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+.header .buttons > div {
+  position: relative;
+  background-color: #656565;
+  min-width: 2.8rem;
+  min-height: 1.5rem;
+  padding: 0.4rem 0 0.25rem 0;
+  margin-left: 0.25rem;
+  border: 1px solid black;
+  border-radius: 0.4rem;
+  text-align: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.header .buttons > div:hover,
+.header .buttons > div.active {
+  background-color: #1a71e4;
+}
+.header .buttons > div:not(.active) .content {
+  visibility: hidden;
+}
+.header .buttons > div.settings .content {
+  width: 20rem;
+}
+.header .buttons > div.settings .content p {
+  margin: 0;
+}
+.header .buttons .content {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  z-index: 2;
+  background-color: whitesmoke;
+  max-width: 100vw;
+  max-height: 90vh;
+  width: 50rem;
+  height: fit-content;
+  padding: 1.5rem;
+  border: 1px solid black;
+  border-radius: 0.4rem;
+  color: black;
+  text-align: justify;
+  font-size: 0.9rem;
+  visibility: visible;
+  cursor: default;
+  overflow: auto;
+  scrollbar-color: #1a71e4;
+  scrollbar-width: thin;
+  -ms-overflow-style: initial;
+}
+.header .buttons .content::-webkit-scrollbar {
+  display: initial;
+  width: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.header .buttons .content .close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  bottom: auto;
+  left: auto;
+  z-index: auto;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.header .buttons .content h3 {
+  margin: 0;
+  cursor: text;
+}
+.header .buttons .content hr {
+  border: none;
+  border-top: 1px solid black;
+}
+.header .buttons .content p {
+  cursor: text;
+}
+.header .buttons .content summary {
+  width: fit-content;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.header .buttons .content summary pre {
+  padding-left: 1rem;
+  margin: 0;
+  font-family: monospace;
+}
+.header .buttons .content table {
+  width: 100%;
+  border: 0.1px solid black;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.header .buttons .content table td,
+.header .buttons .content table th {
+  padding: 0.5rem;
+  border: 0.1px solid black;
+  text-align: justify;
+}
+.header .buttons .content table th {
+  background-color: #b6b6b6;
+  font-weight: bold;
+}
+.header .buttons .content .setting {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .buttons .content .setting input {
+  width: 87%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+}
+.header .buttons .content .setting input[type=color] {
+  width: 78%;
+  margin-left: -1px;
+}
+.header .buttons .content .setting input[type=color] + label {
+  width: 20%;
+}
+.header .buttons .content .setting input[type=radio] {
+  width: 5%;
+}
+.header .buttons .content .setting input[type=radio] + label {
+  width: 40%;
+}
+.header .buttons .content .setting label {
+  width: 11%;
+  margin-top: 0.1rem;
+  cursor: pointer;
+}
+/* ------ grid ------ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(80, 1vw);
+  min-width: 80vw;
+  min-height: 25vw;
+  border: 1px solid black;
+  border-radius: 0.4rem;
+  line-height: 0;
+  overflow: hidden;
+}
+.grid.no-grid .cell {
+  border-left: none;
+  border-top: none;
+}
+.grid .cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: whitesmoke;
+  width: 1vw;
+  height: 1vw;
+  border-left: 1px solid #969696;
+  border-top: 1px solid #969696;
+  color: black;
+  font-weight: bold;
+  font-size: 0.7vw;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.grid .cell:nth-child(-n+80) {
+  border-top: none;
+}
+.grid .cell:nth-child(80n-79) {
+  border-left: none;
+}
+.grid .cell:hover .tooltip {
+  visibility: visible;
+}
+.grid .cell span {
+  font-family: 'Roboto', sans-serif;
+}
+.grid .cell .tooltip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  width: 3rem;
+  height: 1rem;
+  padding: 5px 0;
+  border-radius: 6px;
+  visibility: hidden;
+  color: #fff;
+  text-align: center;
+  pointer-events: none;
+}
+.grid .cell .tooltip.left {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: calc(100% + 3px);
+  z-index: 1;
+}
+.grid .cell .tooltip.right {
+  position: absolute;
+  top: auto;
+  right: calc(100% + 3px);
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+}
+.interface {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 80vw;
+  height: calc(100vh - 25vw - 5.5rem);
+  text-align: center;
+}
+.interface div {
+  height: 80%;
+}
+.interface h5 {
+  margin: 0.75rem 0.5rem 0.5rem 0.5rem;
+}
+.interface textarea {
+  height: 100%;
+  padding: 0.2rem;
+  border: 1px solid black;
+  border-radius: 0.4rem;
+  font-family: monospace;
+  scrollbar-color: #1a71e4;
+  scrollbar-width: thin;
+  -ms-overflow-style: initial;
+}
+.interface textarea::-webkit-scrollbar {
+  display: initial;
+  width: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.interface .code {
+  width: 600px;
+}
+.interface .code textarea {
+  width: 100%;
+}
+.interface .stack {
+  padding: 0 1rem;
+}
+.interface .stack textarea {
+  width: 100%;
+  background-color: #656565;
+  border: 1px solid black;
+  color: white;
+}
+.interface .console {
+  flex-grow: 1;
+}
+.interface .console textarea {
+  background-color: black;
+  width: 100%;
+  height: calc(100% - 2.5rem);
+  border: 1px solid black;
+  color: whitesmoke;
+}
+.interface .console .controls {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  height: 2.3rem;
+}
+.interface .console .controls button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 23%;
+  height: 2.1rem;
+  padding: 0.5rem 1rem 0.45rem 1rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  transition: background-color 0.1s, color 0.1s;
+  cursor: pointer;
+}
+.interface .console .controls button:hover {
+  background-color: #1a71e4;
+  color: white;
+}

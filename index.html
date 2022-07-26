@@ -6,171 +6,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Befunge interpreter</title>
 
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <script src="js/Grid.js" defer></script>
+    <script src="js/Code.js" defer></script>
+    <script src="js/Stack.js" defer></script>
+    <script src="js/Console.js" defer></script>
+
+    <script src="js/Language.js" defer></script>
+    <script src="js/Popup.js" defer></script>
+
+    <script src="nyan_cats/default/nyancat_default.js" defer></script>
+    <script src="nyan_cats/gameboy/nyancat_gameboy.js" defer></script>
+    <script src="nyan_cats/rasta/nyancat_rasta.js" defer></script>
+    <script src="nyan_cats/mexican/nyancat_mexican.js" defer></script>
+    <script src="nyan_cats/christmas/nyancat_christmas.js" defer></script>
+    <script src="js/NyanCat.js" defer></script>
+    <script src="js/NyanCatMenu.js" defer></script>
+
+    <script src="js/script.js" defer></script>
   </head>
+
   <body>
-    <h1 class="header">
-      Befunge 93 Interpreter
+    <div class="header">
+      <span>Befunge 93 Interpreter</span>
+
+      <div class="lang"></div>
+
+      <div class="nyancat-menu">
+        <div class="button" title="NyanCat menu">
+          <i class="fas fa-info"></i>
+        </div>
+
+        <div class="content">
+          <div class="default" title="Nyan Cat"></div>
+          <div class="gameboy" title="Gameboy Cat"></div>
+          <div class="rasta" title="Rasta Cat"></div>
+          <div class="christmas" title="Christmas Cat"></div>
+          <div class="mexican" title="Mexican Cat"></div>
+          
+        </div>
+      </div>
 
       <div class="buttons">
-        <div class="info" title="Informations">
+        <div class="info" title="[ PL ] Informacje&#10;[ EN ] Informations">
           <i class="fas fa-info"></i>
+
           <div class="content" title="">
-            <div class="close"><i class="far fa-times-circle"></i></div>
+            <span class="close"><i class="far fa-times-circle"></i></span>
+
             <h3>BeFunge-93</h3>
             <hr />
+
             <p>
-              BeFunge-93 jest pierwszą wersją ezoterycznego języka programowania BeFunge stworzonego przez Chris'a Presseya w 1993 roku, którego celem było stworzenie języka o
-              możliwie najtrudniejszym do napisania kompilatorze.
-            </p>
-            <p>
-              Kod jest ułożony w 2-wymiarowej tablicy instrukcji o wymiarach 80x25 i wykonywany poprzez poruszanie się w dowolnym kierunku wykonując instrukcję zanjdującą się
-              w obecnym miejscu tablicy. BeFunge-93 przechowuje dane na pojedyńczym stosie, lecz może również zapisywać i odczytywać zawartość dowolnej komórki tablicy, w
-              wyniku czego kod programu może byc samomodyfikowalny.
+              <span lang="pl">
+                BeFunge-93 jest pierwszą wersją ezoterycznego języka programowania BeFunge stworzonego przez Chris'a Presseya w 1993 roku, którego celem było stworzenie języka
+                o możliwie najtrudniejszym do napisania kompilatorze.
+              </span>
+              <span lang="en">
+                BeFunge-93 is first version of esoteric programming language BeFunge invented by Chris Pressey in 1993 with the goal of being as difficult to compile as
+                possible.
+              </span>
             </p>
 
-            <h3>Przykładowe programy</h3>
+            <p>
+              <span lang="pl">
+                Kod jest ułożony w 2-wymiarowej tablicy instrukcji o wymiarach 80x25 i wykonywany poprzez poruszanie się w dowolnym kierunku wykonując instrukcję zanjdującą
+                się w obecnym miejscu tablicy. BeFunge-93 przechowuje dane na pojedyńczym stosie, lecz może również zapisywać i odczytywać zawartość dowolnej komórki tablicy,
+                w wyniku czego kod programu może byc samomodyfikowalny.
+              </span>
+              <span lang="en">
+                Code is laid out on a two-dimensional grid of instructions of size 80x25 and executed by moving in any direction executing command located in current place of
+                grid. BeFunge-93 stores data on single stack, but it can also read and write the contents of any cell in the grid, thereby program code can be self-modifying.
+              </span>
+            </p>
+
+            <h3>
+              <span lang="pl">Przykładowe programy</span>
+              <span lang="en">Example programs</span>
+            </h3>
             <hr />
+
             <details>
-              <summary>Fizz buzz</summary>
+              <summary>
+                <span lang="pl">N-ty wyraz ciągu 2<sup>n + 1</sup> - 3</span>
+                <span lang="en">N-ty wyraz ciągu 2<sup>n + 1</sup> - 3</span>
+              </summary>
+              <pre>
+&:00p0`!  #v_001p102pv
+v"błąd n<1"<         >01g1+:01p00g1-`!#v_02g.@
+>,,,,,,,,,@          ^       p20+3*2g20<
+              </pre>
+            </details>
+
+            <details>
+              <summary>
+                <span lang="pl">Fizz buzz</span>
+                <span lang="en">Fizz buzz</span>
+              </summary>
               <pre>
 >&::3%#v_" zzif",,,,,v
  v     <             <
  > 5%#v_" zzub",,,,,v
 ^,+19.<             <
-             </pre>
+              </pre>
             </details>
 
             <details>
-              <summary>Dzielniki liczby</summary>
+              <summary>
+                <span lang="pl">Dzielniki liczby</span>
+                <span lang="en">Factors of the number</span>
+              </summary>
               <pre>
 &10p1.2v
  v\g01:< >" ",.@
  %     ^_^#  -\<
 v_" ",:.>1+:10g^
 >       ^
-             </pre>
-            </details>
-
-            <details>
-              <summary>N-ty wyraz ciągu 2<sup>n + 1</sup> - 3</summary>
-              <pre>
-&:00p0`!  #v_001p102pv
-v"błąd n<1"<         >01g1+:01p00g1-`!#v_02g.@
->,,,,,,,,,@          ^       p20+3*2g20<
-             </pre>
+              </pre>
             </details>
           </div>
         </div>
 
-        <div class="instructions" title="Instructions">
+        <div class="instructions" title="[ PL ] Instrukcje&#10;[ EN ] Instructions">
           <i class="fas fa-bars"></i>
+
           <div class="content" title="">
-            <div class="close"><i class="far fa-times-circle"></i></div>
-            <h3>Instrukcje</h3>
+            <span class="close"><i class="far fa-times-circle"></i></span>
+
+            <h3>
+              <span lang="pl">Instrukcje</span>
+              <span lang="en">Instructions</span>
+            </h3>
             <hr />
-            <table>
+
+            <table lang="pl">
               <tr>
                 <th>Komenda</th>
                 <th>Opis</th>
               </tr>
               <tr>
                 <td>0 - 9</td>
-                <td>wkłada na stos odpowiedni numer</td>
+                <td>Wkłada na stos odpowiedni numer</td>
               </tr>
               <tr>
                 <td>+</td>
-                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B + A</td>
+                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B + A</td>
               </tr>
               <tr>
                 <td>-</td>
-                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B − A</td>
+                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B − A</td>
               </tr>
               <tr>
                 <td>*</td>
-                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B * A</td>
+                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B * A</td>
               </tr>
               <tr>
                 <td>/</td>
-                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B / A zaokrągloną w dół</td>
+                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B / A zaokrągloną w dół</td>
               </tr>
               <tr>
                 <td>%</td>
-                <td>ściąga ze stosu kolejno A oraz B, następnie wkłada na stos resztę z dzielenia całkowitego B / A</td>
+                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos resztę z dzielenia całkowitego B / A</td>
               </tr>
               <tr>
                 <td>!</td>
-                <td>ściąga ze stosu wartość A, jeśli jest równa 0 wkłada na stos wartość 1, w przeciwnym wypadku 0</td>
+                <td>Ściąga ze stosu wartość A, jeśli jest równa 0 wkłada na stos wartość 1, w przeciwnym wypadku 0</td>
               </tr>
               <tr>
                 <td>`</td>
-                <td>ściąga ze stosu kolejno A oraz B, jeśli B > A wkłada na stos wartość 1, w przeciwnym wypadku 0</td>
+                <td>Ściąga ze stosu kolejno A oraz B, jeśli B > A wkłada na stos wartość 1, w przeciwnym wypadku 0</td>
               </tr>
               <tr>
                 <td>></td>
-                <td>ustawia kierunek wykonywania programu w prawo</td>
+                <td>Ustawia kierunek wykonywania programu w prawo</td>
               </tr>
               <tr>
                 <td><</td>
-                <td>ustawia kierunek wykonywania programu w lewo</td>
+                <td>Ustawia kierunek wykonywania programu w lewo</td>
               </tr>
               <tr>
                 <td>^</td>
-                <td>ustawia kierunek wykonywania programu do góry</td>
+                <td>Ustawia kierunek wykonywania programu do góry</td>
               </tr>
               <tr>
                 <td>v</td>
-                <td>ustawia kierunek wykonywania programu do dółu</td>
+                <td>Ustawia kierunek wykonywania programu do dółu</td>
               </tr>
               <tr>
                 <td>?</td>
-                <td>ustawia losowy kierunek wykonywania programu</td>
+                <td>Ustawia losowy kierunek wykonywania programu</td>
               </tr>
               <tr>
                 <td>_</td>
-                <td>ściąga ze stosu wartość A, jeśli A jest równe 0 ustawia kierunek w prawo, w przeciwnym wypadku w lewo</td>
+                <td>Ściąga ze stosu wartość A, jeśli A jest równe 0 ustawia kierunek w prawo, w przeciwnym wypadku w lewo</td>
               </tr>
               <tr>
                 <td>|</td>
-                <td>ściąga ze stosu wartość A, jeśli A jest równe 0 ustawia kierunek do dołu, w przeciwnym wypadku do góry</td>
+                <td>Ściąga ze stosu wartość A, jeśli A jest równe 0 ustawia kierunek do dołu, w przeciwnym wypadku do góry</td>
               </tr>
               <tr>
                 <td>"</td>
-                <td>przełącza czytanie znaków (wkłada na stos wartości ASCII napotkanych znaków aż do następnego ")</td>
+                <td>Przełącza czytanie znaków (wkłada na stos wartości ASCII napotkanych znaków aż do następnego ")</td>
               </tr>
               <tr>
                 <td>:</td>
-                <td>duplikuje wartośc na szczycie stosu</td>
+                <td>Duplikuje wartośc na szczycie stosu</td>
               </tr>
               <tr>
                 <td>\</td>
-                <td>zamienia miejscami dwie wartości na szczycie stosu</td>
+                <td>Zamienia miejscami dwie wartości na szczycie stosu</td>
               </tr>
               <tr>
                 <td>$</td>
-                <td>usuwa wartość ze szczytu stosu</td>
+                <td>Usuwa wartość ze szczytu stosu</td>
               </tr>
               <tr>
                 <td>.</td>
-                <td>ściąga ze stosu wartośc A i wypisuje ją w konsoli jako numer</td>
+                <td>Ściąga ze stosu wartośc A i wypisuje ją w konsoli jako numer</td>
               </tr>
               <tr>
                 <td>,</td>
-                <td>ściąga ze stosu wartośc A i wypisuje ją w konsoli jako znak ASCII</td>
+                <td>Ściąga ze stosu wartośc A i wypisuje ją w konsoli jako znak ASCII</td>
               </tr>
               <tr>
                 <td>#</td>
-                <td>pomija następną napotkaną instrukcje w bieżącym kierunku</td>
+                <td>Pomija następną napotkaną instrukcje w bieżącym kierunku</td>
               </tr>
               <tr>
                 <td>g</td>
-                <td>ściąga ze stosu kolejno Y i X, następnie wkłada na stos wartość ASCII znaku w komórce tabeli o współrzędnych [Y, X]</td>
+                <td>Ściąga ze stosu kolejno Y i X, następnie wkłada na stos wartość ASCII znaku w komórce tabeli o współrzędnych [Y, X]</td>
               </tr>
               <tr>
                 <td>p</td>
-                <td>ściąga ze stosu kolejno Y, X i V, następnie zmienia znak w komórce tabeli o współrzędnych [Y, X] na znak ASCII o wartości V</td>
+                <td>Ściąga ze stosu kolejno Y, X i V, następnie zmienia znak w komórce tabeli o współrzędnych [Y, X] na znak ASCII o wartości V</td>
               </tr>
               <tr>
                 <td>&</td>
@@ -178,61 +252,242 @@ v"błąd n<1"<         >01g1+:01p00g1-`!#v_02g.@
               </tr>
               <tr>
                 <td>~</td>
-                <td>pobiera od użytkownika znak w konsoli i wkłada jego wartość ASCII na stos</td>
+                <td>Pobiera od użytkownika znak w konsoli i wkłada jego wartość ASCII na stos</td>
               </tr>
               <tr>
                 <td>@</td>
-                <td>kończy działanie programu</td>
+                <td>Kończy działanie programu</td>
+              </tr>
+            </table>
+
+            <table lang="en">
+              <tr>
+                <th>Command</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>0 - 9</td>
+                <td>Push corresponding number onto the stack</td>
+              </tr>
+              <tr>
+                <td>+</td>
+                <td>Pop two values A and B, then push the result of B + A</td>
+              </tr>
+              <tr>
+                <td>-</td>
+                <td>Pop two values A and B, then push the result of B - A</td>
+              </tr>
+              <tr>
+                <td>*</td>
+                <td>Pop two values A and B, then push the result of B * A</td>
+              </tr>
+              <tr>
+                <td>/</td>
+                <td>Pop two values A and B, then push the result of B / A rounded down</td>
+              </tr>
+              <tr>
+                <td>%</td>
+                <td>Pop two values A and B, then push the remainder of the integer division of B / A</td>
+              </tr>
+              <tr>
+                <td>!</td>
+                <td>Pop value A. If A is equal to 0, push 1, otherwise zero</td>
+              </tr>
+              <tr>
+                <td>`</td>
+                <td>Pop two values A and B, if B > A, push 1, otherwise zero</td>
+              </tr>
+              <tr>
+                <td>></td>
+                <td>Sets direction to the right</td>
+              </tr>
+              <tr>
+                <td><</td>
+                <td>Sets direction to the left</td>
+              </tr>
+              <tr>
+                <td>^</td>
+                <td>Sets direction to the top</td>
+              </tr>
+              <tr>
+                <td>v</td>
+                <td>Sets direction to the bottom</td>
+              </tr>
+              <tr>
+                <td>?</td>
+                <td>Sets random direction</td>
+              </tr>
+              <tr>
+                <td>_</td>
+                <td>Pop value A, if A is equal to the 0 set direction to the right, otherwise to the left</td>
+              </tr>
+              <tr>
+                <td>|</td>
+                <td>Pop value A, if A is equal to the 0 set direction to the bottom, otherwise to the top</td>
+              </tr>
+              <tr>
+                <td>"</td>
+                <td>Toggle stringmode (push each character's ASCII value all the way up to the next ")</td>
+              </tr>
+              <tr>
+                <td>:</td>
+                <td>Duplicate top stack value</td>
+              </tr>
+              <tr>
+                <td>\</td>
+                <td>Swap top stack values</td>
+              </tr>
+              <tr>
+                <td>$</td>
+                <td>Pop top of stack and discard</td>
+              </tr>
+              <tr>
+                <td>.</td>
+                <td>Pop value A and output it as integer</td>
+              </tr>
+              <tr>
+                <td>,</td>
+                <td>Pop value A and output it as ASCII character</td>
+              </tr>
+              <tr>
+                <td>#</td>
+                <td>Jump over next command in the current direction</td>
+              </tr>
+              <tr>
+                <td>g</td>
+                <td>Pop two value Y i X, then push the ASCII value of the character at that position in the program</td>
+              </tr>
+              <tr>
+                <td>p</td>
+                <td>Pop three value Y, X i V, then change the character at the position [Y, X] in the program to the character with ASCII value V</td>
+              </tr>
+              <tr>
+                <td>&</td>
+                <td>Get integer from user and push it</td>
+              </tr>
+              <tr>
+                <td>~</td>
+                <td>Get ASCII character from user and push it</td>
+              </tr>
+              <tr>
+                <td>@</td>
+                <td>End program</td>
               </tr>
             </table>
           </div>
         </div>
 
-        <div class="settings" title="Settings">
+        <div class="settings" title="[ PL ] Ustawienia&#10;[ EN ] Settings">
           <i class="fas fa-cog"></i>
+
           <div class="content" title="">
-            <div class="close"><i class="far fa-times-circle"></i></div>
-            <h3>Ustawienia</h3>
+            <span class="close"><i class="far fa-times-circle"></i></span>
+
+            <h3>
+              <span lang="pl">Ustawienia</span>
+              <span lang="en">Settings</span>
+            </h3>
             <hr />
-            <div>Szybkość wskaźnika</div>
-            <input type="range" min="1" max="120" value="120" step="1" />
-            <label>120</label>
+
+            <p>
+              <span lang="pl">Szybkość wskaźnika</span>
+              <span lang="en">Pointer speed</span>
+            </p>
+            <div class="setting">
+              <input type="range" min="1" max="120" value="120" step="1" id="pointer_speed" />
+              <label for="pointer_speed">120</label>
+            </div>
+
+            <p>
+              <span lang="pl">Kolor wskaźnika</span>
+              <span lang="en">Pointer color</span>
+            </p>
+            <div class="setting">
+              <input type="color" value="#ffd000" id="pointer_color" />
+              <label for="pointer_color">#ffd000</label>
+            </div>
+
+            <p>
+              <span lang="pl">Kolor punktu zatrzymania</span>
+              <span lang="en">Breakpoint color</span>
+            </p>
+            <div class="setting">
+              <input type="color" value="#ff0000" id="breakpoint_color" />
+              <label for="breakpoint_color">#ff0000</label>
+            </div>
+
+            <p>
+              <span lang="pl">Siatka</span>
+              <span lang="en">Grid</span>
+            </p>
+            <div class="setting">
+              <input type="radio" checked="true" name="show_grid" id="show_grid_on" />
+              <label for="show_grid_on">
+                <span lang="pl">Włączona</span>
+                <span lang="en">Turn on</span>
+              </label>
+
+              <input type="radio" name="show_grid" id="show_grid_off" />
+              <label for="show_grid_off">
+                <span lang="pl">Wyłączona</span>
+                <span lang="en">Turn off</span>
+              </label>
+            </div>
           </div>
-        </div>
-      </div>
-    </h1>
-    <div class="grid" title="Wciśnij lewy przycisk myszy aby dodać punkt przerwania"></div>
-
-    <div class="interface">
-      <div class="code">
-        <h5>Code</h5>
-        <textarea cols="80" title="Zaznacz tekst i wciśnij prawy przycisk myszki aby go odwrócić">"!dlrow ,olleH",,,,,,,,,,,,,@</textarea>
-      </div>
-
-      <div class="stack">
-        <h5>Stack</h5>
-        <textarea class="scroll" cols="5" disabled></textarea>
-      </div>
-
-      <div class="console">
-        <h5>Console</h5>
-        <textarea readonly></textarea>
-
-        <div class="buttons">
-          <button class="init">Init</button>
-          <button class="run">Run</button>
-          <button class="step">Step</button>
-          <button class="stop">Stop</button>
         </div>
       </div>
     </div>
 
-    <script type="text/javascript" src="js/init.js"></script>
-    <script type="text/javascript" src="js/step.js"></script>
-    <script type="text/javascript" src="js/global.js"></script>
-    <script type="text/javascript" src="js/grid.js"></script>
-    <script type="text/javascript" src="js/code.js"></script>
-    <script type="text/javascript" src="js/stack.js"></script>
-    <script type="text/javascript" src="js/console.js"></script>
+    <div class="grid" title="[ PL ] Wciśnij lewy przycisk myszy aby dodać punkt przerwania&#10;[ EN ] Press left mouse button to add breakpoint"></div>
+
+    <div class="interface">
+      <div class="code">
+        <h5>
+          <span lang="pl">Kod programu</span>
+          <span lang="en">Program code</span>
+        </h5>
+        <textarea cols="80" title="[ PL ] Zaznacz tekst i wciśnij prawy przycisk myszki aby go odwrócić&#10;[ EN ] Select text and press right mouse button to reverse it">
+"!dlrow ,olleH",,,,,,,,,,,,,@</textarea
+        >
+      </div>
+
+      <div class="stack">
+        <h5>
+          <span lang="pl">Stos</span>
+          <span lang="en">Stack</span>
+        </h5>
+        <textarea class="scroll" cols="5" disabled></textarea>
+      </div>
+
+      <div class="console">
+        <h5>
+          <span lang="pl">Konsola</span>
+          <span lang="en">Console</span>
+        </h5>
+        <textarea readonly></textarea>
+
+        <div class="controls">
+          <button class="init">
+            <span lang="pl">Załaduj</span>
+            <span lang="en">Load</span>
+          </button>
+
+          <button class="run">
+            <span lang="pl">Uruchom</span>
+            <span lang="en">Run</span>
+          </button>
+
+          <button class="step">
+            <span lang="pl">Krok</span>
+            <span lang="en">Step</span>
+          </button>
+
+          <button class="stop">
+            <span lang="pl">Stop</span>
+            <span lang="en">Stop</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

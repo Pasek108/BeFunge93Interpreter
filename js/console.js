@@ -1,42 +1,65 @@
 "use strict";
 
-const console_textarea = document.querySelector(".console textarea");
-console_textarea.addEventListener("keydown", acceptInput);
+class Console {
+  #container = null;
+  #end_input_callback = null;
+  #locked = true;
+  #input_start_position = 0;
+  #input_length = 0;
+  #input_value = "";
 
-function acceptInput(e) {
-  focusConsole();
+  constructor(container, end_input_callback) {
+    this.#end_input_callback = end_input_callback;
 
-  if (e.code === "Enter" && input) {
-    console_textarea.value += "\n";
-    readInput();
-    console_textarea.readOnly = true;
-    input = 0;
-    input_length = 0;
-    if (is_running) interval = window.requestAnimationFrame(step);
-  } else if (e.code === "Backspace" && input) {
-    if (input_length <= 0) e.preventDefault();
-    else input_length--;
-  }
-  else if (input) input_length++;
-}
+    this.#container = container;
+    this.#container.addEventListener("keydown", (evt) => {
+      if (this.#locked) return;
 
-function readInput() {
-  let input_value = "";
-  const start_index = console_value.length;
-  const end_index = console_textarea.value.length;
-
-  for (let i = start_index; i < end_index; i++) {
-    input_value += console_textarea.value[i];
+      this.focus();
+      if (evt.code === "Enter") this.#endInput();
+      else if (evt.code === "Backspace") {
+        if (this.#input_length <= 0) evt.preventDefault();
+        else this.#input_length--;
+      } else this.#input_length++;
+    });
   }
 
-  if (input === 1) input_value = input_value.charCodeAt(0);
-  else if (input === 2) input_value = parseInt(input_value);
+  /* -------------------------- private methods -------------------------- */
+  #endInput() {
+    this.#input_value = this.#container.value.slice(this.#input_start_position);
+    this.#end_input_callback(this.#input_value);
+    this.#container.value += "\n";
 
-  putOnStack(input_value);
-}
+    this.#locked = true;
+    this.#input_start_position = 0;
+    this.#input_length = 0;
+    this.#input_value = "";
+    this.#container.readOnly = true;
+  }
 
-function focusConsole() {
-  const text_len = console_textarea.value.length;
-  console_textarea.setSelectionRange(text_len, text_len);
-  console_textarea.focus();
+  /* -------------------------- public methods -------------------------- */
+  startInput() {
+    this.#locked = false;
+    this.#container.readOnly = false;
+    this.#input_start_position = this.#container.value.length;
+    this.focus();
+  }
+
+  focus() {
+    const current_position = this.#container.value.length;
+    this.#container.setSelectionRange(current_position, current_position);
+    this.#container.focus();
+  }
+
+  print(value) {
+    this.#container.value += value;
+  }
+
+  clear() {
+    this.#locked = true;
+    this.#input_start_position = 0;
+    this.#input_length = 0;
+    this.#input_value = "";
+    this.#container.value = "";
+  }
 }
