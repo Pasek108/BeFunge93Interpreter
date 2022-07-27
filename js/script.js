@@ -14,10 +14,14 @@ class Program {
   skip = false;
   waiting_for_input = false;
   input_type = "";
+  speed = 120;
+  fps_interval = 1000 / 60;
+  running = false;
   stop_execution = false;
+  pause_execution = false;
 
   constructor() {
-    this.grid = new Grid(document.querySelector(".grid"));
+    this.grid = new Grid(document.querySelector(".grid"), this.stop.bind(this));
     this.code = new Code(document.querySelector(".code textarea"));
     this.stack = new Stack(document.querySelector(".stack textarea"));
     this.console = new Console(document.querySelector(".console textarea"), this.endInput.bind(this));
@@ -48,6 +52,8 @@ class Program {
   }
 
   load() {
+    this.stop();
+
     this.direction = { x: 1, y: 0 };
     this.skip = false;
     this.text_mode = false;
@@ -55,10 +61,11 @@ class Program {
     this.input_type = "";
     this.stop_execution = false;
 
-    const code = this.code.getCode();
     this.console.clear();
     this.stack.clear();
     this.grid.clear();
+
+    const code = this.code.getCode();
     this.grid.loadCode(code);
   }
 
@@ -73,6 +80,31 @@ class Program {
       if (this.input_type === "char") alert("Wprowadź znak w konsoli");
       this.console.focus();
       return;
+    }
+
+    this.now = 0;
+    this.then = window.performance.now();
+    this.elapsed = 0;
+    this.running = true;
+    this.pause_execution = false;
+    this.animation = requestAnimationFrame(this.runNextStep.bind(this));
+  }
+
+  runNextStep(new_time) {
+    if (this.stop_execution || this.pause_execution || this.waiting_for_input) {
+      if (!this.waiting_for_input) this.running = false;
+      cancelAnimationFrame(this.animation);
+      return;
+    }
+
+    this.animation = requestAnimationFrame(this.runNextStep.bind(this));
+
+    this.now = new_time;
+    this.elapsed = this.now - this.then;
+
+    if (this.elapsed > this.fps_interval) {
+      this.then = this.now - (this.elapsed % this.fps_interval);
+      this.step();
     }
   }
 
@@ -104,128 +136,57 @@ class Program {
     }
 
     switch (command) {
-      case "":
-        this.doNothing();
-        break;
-      case " ":
-        this.doNothing();
-        break;
-      case "0":
-        this.stack.put(0);
-        break;
-      case "1":
-        this.stack.put(1);
-        break;
-      case "2":
-        this.stack.put(2);
-        break;
-      case "3":
-        this.stack.put(3);
-        break;
-      case "4":
-        this.stack.put(4);
-        break;
-      case "5":
-        this.stack.put(5);
-        break;
-      case "6":
-        this.stack.put(6);
-        break;
-      case "7":
-        this.stack.put(7);
-        break;
-      case "8":
-        this.stack.put(8);
-        break;
-      case "9":
-        this.stack.put(9);
-        break;
-      case "+":
-        this.stack.add();
-        break;
-      case "-":
-        this.stack.substract();
-        break;
-      case "*":
-        this.stack.multiply();
-        break;
-      case "/":
-        this.stack.divide();
-        break;
-      case "%":
-        this.stack.modulo();
-        break;
-      case "`":
-        this.stack.compare();
-        break;
-      case "$":
-        this.stack.get();
-        break;
-      case ":":
-        this.stack.duplicate();
-        break;
-      case "!":
-        this.stack.negate();
-        break;
-      case "\\":
-        this.stack.swap();
-        break;
-      case ">":
-        this.changeDirection(1, 0);
-        break;
-      case "<":
-        this.changeDirection(-1, 0);
-        break;
-      case "^":
-        this.changeDirection(0, -1);
-        break;
-      case "v":
-        this.changeDirection(0, 1);
-        break;
-      case "?":
-        this.changeDirection(1, 1);
-        break;
-      case "#":
-        this.skip = true;
-        break;
-      case '"':
-        this.text_mode = !this.text_mode;
-        break;
-      case "_":
-        this.ifStatement(0);
-        break;
-      case "|":
-        this.ifStatement(1);
-        break;
-      case "p":
-        this.putValueInGrid();
-        break;
-      case "g":
-        this.getValueFromGrid();
-        break;
-      case "~":
-        this.startInput("char");
-        break;
-      case "&":
-        this.startInput("int");
-        break;
-      case ".":
-        this.console.print(this.stack.get());
-        break;
-      case ",":
-        this.console.print(String.fromCharCode(this.stack.get()));
-        break;
-      case "@":
-        this.stop_execution = true;
-        break;
-      default:
-        this.unknownCommand();
+      case "":this.doNothing();break;
+      case " ": this.doNothing(); break;
+      case "0": this.stack.put(0); break;
+      case "1": this.stack.put(1); break;
+      case "2": this.stack.put(2); break;
+      case "3": this.stack.put(3); break;
+      case "4": this.stack.put(4); break;
+      case "5": this.stack.put(5); break;
+      case "6": this.stack.put(6); break;
+      case "7": this.stack.put(7); break;
+      case "8": this.stack.put(8); break;
+      case "9": this.stack.put(9); break;
+      case "+": this.stack.add(); break;
+      case "-": this.stack.substract(); break;
+      case "*": this.stack.multiply(); break;
+      case "/": this.stack.divide(); break;
+      case "%": this.stack.modulo(); break;
+      case "`": this.stack.compare(); break;
+      case "$": this.stack.get(); break;
+      case ":": this.stack.duplicate(); break;
+      case "!": this.stack.negate(); break;
+      case "\\": this.stack.swap(); break;
+      case ">": this.changeDirection(1, 0); break;
+      case "<": this.changeDirection(-1, 0); break;
+      case "^": this.changeDirection(0, -1); break;
+      case "v": this.changeDirection(0, 1); break;
+      case "?": this.changeDirection(1, 1); break;
+      case "#": this.skip = true; break;
+      case '"': this.text_mode = !this.text_mode; break;
+      case "_": this.ifStatement(0); break;
+      case "|": this.ifStatement(1); break;
+      case "p": this.putValueInGrid(); break;
+      case "g": this.getValueFromGrid(); break;
+      case "~": this.startInput("char"); break;
+      case "&": this.startInput("int"); break;
+      case ".": this.console.print(this.stack.get()); break;
+      case ",": this.console.print(String.fromCharCode(this.stack.get())); break;
+      case "@": this.stop_execution = true; break;
+      default: this.unknownCommand();
     }
   }
 
-  stop() {}
+  stop() {
+    this.pause_execution = true;
+    cancelAnimationFrame(this.animation);
+  }
 
   applySettings() {
+    this.speed = this.settings.getSpeed();
+    this.fps_interval = 1000 / this.speed;
+
     const pointer_color = this.settings.getPointerColor();
     const breakpoint_color = this.settings.getBreakpointColor();
     const show_grid = this.settings.getShowGrid();
@@ -293,6 +254,8 @@ class Program {
 
     this.waiting_for_input = false;
     this.input_type = "";
+
+    if (this.running) this.run();
   }
 
   unknownCommand() {

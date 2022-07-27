@@ -66,6 +66,11 @@ class Settings extends Popup {
     super(container);
     this.#settings_change_callback = settings_change_callback;
 
+    if (!localStorage.hasOwnProperty("pointer_color")) localStorage.setItem("pointer_color", "#ffd000");
+    if (!localStorage.hasOwnProperty("breakpoint_color")) localStorage.setItem("breakpoint_color", "#ff0000");
+    this.#pointer_color = localStorage.getItem("pointer_color");
+    this.#breakpoint_color = localStorage.getItem("breakpoint_color");
+
     this.#settings = document.querySelectorAll(".setting");
     this.#speed_input = this.#settings[0].querySelector("input");
     this.#speed_label = this.#settings[0].querySelector("label");
@@ -96,6 +101,7 @@ class Settings extends Popup {
   #setPointerColor() {
     this.#pointer_color = this.#pointer_color_input.value;
     this.#pointer_color_label.innerHTML = this.#pointer_color;
+    localStorage.setItem("pointer_color", this.#pointer_color);
 
     this.#settings_change_callback();
   }
@@ -103,6 +109,7 @@ class Settings extends Popup {
   #setBreakpointColor() {
     this.#breakpoint_color = this.#breakpoint_color_input.value;
     this.#breakpoint_color_label.innerHTML = this.#breakpoint_color;
+    localStorage.setItem("breakpoint_color", this.#breakpoint_color);
 
     this.#settings_change_callback();
   }

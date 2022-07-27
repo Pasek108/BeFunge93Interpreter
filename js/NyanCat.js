@@ -104,18 +104,12 @@ class NyanCat {
   #drawCatBody() {
     const body_y_timing = (y) => {
       switch (this.tick % 6) {
-        case 0:
-          return y + 1;
-        case 1:
-          return y + 0;
-        case 2:
-          return y + 0;
-        case 3:
-          return y + 1;
-        case 4:
-          return y + 1;
-        case 5:
-          return y + 1;
+        case 0: return y + 1;
+        case 1: return y + 0;
+        case 2: return y + 0;
+        case 3: return y + 1;
+        case 4: return y + 1;
+        case 5: return y + 1;
       }
     };
 
@@ -131,35 +125,23 @@ class NyanCat {
   #drawCatHead() {
     const head_y_timing = (y) => {
       switch (this.tick % 6) {
-        case 0:
-          return y + 0;
-        case 1:
-          return y + 0;
-        case 2:
-          return y + 0;
-        case 3:
-          return y + 1;
-        case 4:
-          return y + 1;
-        case 5:
-          return y + 1;
+        case 0: return y + 0;
+        case 1: return y + 0;
+        case 2: return y + 0;
+        case 3: return y + 1;
+        case 4: return y + 1;
+        case 5: return y + 1;
       }
     };
 
     const head_x_timing = (x) => {
       switch (this.tick % 6) {
-        case 0:
-          return x + 0;
-        case 1:
-          return x + 0;
-        case 2:
-          return x + 1;
-        case 3:
-          return x + 1;
-        case 4:
-          return x + 1;
-        case 5:
-          return x + 0;
+        case 0: return x + 0;
+        case 1: return x + 0;
+        case 2: return x + 1;
+        case 3: return x + 1;
+        case 4: return x + 1;
+        case 5: return x + 0;
       }
     };
 
@@ -173,35 +155,23 @@ class NyanCat {
   #drawPaws() {
     const paws_y_timing = (y) => {
       switch (this.tick % 6) {
-        case 0:
-          return y + 1;
-        case 1:
-          return y + 0;
-        case 2:
-          return y + 0;
-        case 3:
-          return y + 1;
-        case 4:
-          return y + 1;
-        case 5:
-          return y + 1;
+        case 0: return y + 1;
+        case 1: return y + 0;
+        case 2: return y + 0;
+        case 3: return y + 1;
+        case 4: return y + 1;
+        case 5: return y + 1;
       }
     };
 
     const paws_x_timing = (x) => {
       switch (this.tick % 6) {
-        case 0:
-          return x + 0;
-        case 1:
-          return x + 1;
-        case 2:
-          return x + 2;
-        case 3:
-          return x + 3;
-        case 4:
-          return x + 2;
-        case 5:
-          return x + 1;
+        case 0: return x + 0;
+        case 1: return x + 1;
+        case 2: return x + 2;
+        case 3: return x + 3;
+        case 4: return x + 2;
+        case 5: return x + 1;
       }
     };
 
