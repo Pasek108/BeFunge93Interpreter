@@ -31,16 +31,10 @@ See [live demo](https://weather-artur-pas.netlify.app).
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
-
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
+Copy repository and:
+- Just open index.html in browser
+- Open project in prepros
+- Start development server in VS Code using [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) and [EasyLess](https://marketplace.visualstudio.com/items?itemName=mrcrowl.easy-less)
 
 
 ## Project Status
