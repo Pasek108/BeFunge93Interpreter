@@ -33,8 +33,8 @@ See [live demo](https://weather-artur-pas.netlify.app).
 ## Setup
 Copy repository and:
 - Just open index.html in browser
-- Open project in prepros
-- Start development server in VS Code using [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) and [EasyLess](https://marketplace.visualstudio.com/items?itemName=mrcrowl.easy-less)
+- Start development server in VS Code using [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+- Open project in [Prepros](https://prepros.io)
 
 
 ## Project Status
