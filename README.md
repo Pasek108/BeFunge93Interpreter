@@ -28,6 +28,7 @@ See [live demo](https://weather-artur-pas.netlify.app).
 - Tabel of availalble instructions
 - Settings (speed, pointer and breakpoint color, grid lines visibility)
 - Nyan cats animations (nyan cat, gameboy cat, rasta cat, christmas cat, mexican cat)
+- Language change
 
 
 ## Setup
