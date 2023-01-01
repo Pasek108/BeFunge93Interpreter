@@ -1,47 +1,33 @@
 # BeFunge 93 Interpreter
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+Befunge 93 interpreter with visualization on grid, debugger and nyan cats pixel animations.<br>
+See [live demo](https://weather-artur-pas.netlify.app).
 
 ![Example screenshot](screenshot.png)
 
 ## Table of Contents
-* [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-* [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-<!-- * [License](#license) -->
-
-
-## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- HTML5
+- LESS
+- JS
 
 
 ## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
-
-
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
+- Interpretation of given code program
+- Visualisation of program in grid, stack and interactive console
+- Program controls (run, step, stop)
+- Breakpoints that pause program execution
+- Information about language and exapmle programs
+- Tabel of availalble instructions
+- Settings (speed, pointer and breakpoint color, grid lines visibility)
+- Nyan cats animations (nyan cat, gameboy cat, rasta cat, christmas cat, mexican cat)
 
 
 ## Setup
