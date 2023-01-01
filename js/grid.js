@@ -34,19 +34,22 @@ class Grid {
 
   #createGrid() {
     this.#cells = [];
+    const grid = document.createDocumentFragment();
 
     for (let i = 0; i < this.#array_y; i++) {
       for (let j = 0; j < this.#array_x; j++) {
         this.#cells.push(this.#createCell(i, j));
-        this.#container.appendChild(this.#cells[j + i * this.#array_x]);
+        grid.appendChild(this.#cells[j + i * this.#array_x]);
       }
     }
+
+    this.#container.appendChild(grid);
+    this.#container.addEventListener("click", this.#addBreakpoint.bind(this));
   }
 
   #createCell(y, x) {
     const cell = document.createElement("div");
     cell.className = "cell";
-    cell.addEventListener("click", (evt) => this.#addBreakpoint(cell));
     cell.appendChild(this.#createTooltip(y, x));
     const instruction = document.createElement("span");
     cell.append(instruction);
@@ -54,7 +57,8 @@ class Grid {
     return cell;
   }
 
-  #addBreakpoint(cell) {
+  #addBreakpoint(e) {
+    const cell = (e.target.className === "cell") ? e.target : e.target.parentElement;
     const is_cell_a_breakpoint = cell.style.backgroundColor === hexToRgb(this.#breakpoint_color);
 
     if (is_cell_a_breakpoint) cell.style.backgroundColor = "whitesmoke";
@@ -103,10 +107,7 @@ class Grid {
     this.#cells[old_cell_index].style.backgroundColor = "whitesmoke";
 
     const is_cell_a_breakpoint = this.#cells[new_cell_index].style.backgroundColor === hexToRgb(this.#breakpoint_color);
-    if (is_cell_a_breakpoint) {
-      this.stop_callback();
-      console.log("dipa");
-    }
+    if (is_cell_a_breakpoint) this.stop_callback();
 
     this.#cells[new_cell_index].style.backgroundColor = this.#pointer_color;
   }
