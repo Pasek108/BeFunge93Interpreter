@@ -1,6 +1,6 @@
 # BeFunge 93 Interpreter
 Befunge 93 interpreter with visualization on grid, debugger and nyan cats pixel animations.<br>
-See [live demo](https://pas-artur.000webhostapp.com/befunge93-interpreter/).
+See [live demo](https://pas-artur.000webhostapp.com/BeFunge93Interpreter/).
 
 ![Example screenshot](screenshot.png)
 
