@@ -1,0 +1,79 @@
+.flex(@direction: row, @align: normal, @justify: normal) {
+  display: flex;
+  flex-direction: @direction;
+  align-items: @align;
+  justify-content: @justify;
+}
+
+.interface {
+  .flex(row, flex-start, space-between);
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 80rem;
+  max-width: 100%;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+
+  &>div {
+    .flex(column, flex-start, space-between);
+    height: 15rem;
+  }
+
+  h5 {
+    width: 100%;
+    margin-bottom: 0.25rem;
+    text-align: center;
+  }
+
+  textarea {
+    height: 100%;
+    padding: 0.2rem;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    font-family: monospace;
+    font-size: 0.830rem;
+    line-break: anywhere;
+    white-space: break-spaces;
+    word-wrap: break-word;
+    resize: none;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: initial;
+      width: 0.5rem;
+      padding: 0.5rem;
+    }
+  }
+}
+
+.code {
+  overflow: scroll;
+  overflow-y: hidden;
+
+  textarea {
+    width: 37.75rem;
+  }
+}
+
+.stack {
+  flex-grow: 1;
+  
+  textarea {
+    width: 100%;
+    background-color: #656565;
+    border: 1px solid black;
+    color: white;
+  }
+}
+
+.console {
+  flex-grow: 1000;
+  min-width: 24rem;
+
+  textarea {
+    background-color: black;
+    width: 100%;
+    border: 1px solid black;
+    color: whitesmoke;
+  }
+}

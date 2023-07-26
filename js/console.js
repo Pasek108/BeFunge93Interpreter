@@ -1,65 +1,65 @@
-"use strict";
+"use strict"
 
 class Console {
-  #container = null;
-  #end_input_callback = null;
-  #locked = true;
-  #input_start_position = 0;
-  #input_length = 0;
-  #input_value = "";
+  constructor(end_input_callback) {
+    this.container = document.querySelector(".console")
 
-  constructor(container, end_input_callback) {
-    this.#end_input_callback = end_input_callback;
+    this.end_input_callback = end_input_callback
+    this.locked = true
+    this.input_start_position = 0
+    this.input_length = 0
+    this.input_value = ""
 
-    this.#container = container;
-    this.#container.addEventListener("keydown", (evt) => {
-      if (this.#locked) return;
+    this.textarea = this.container.querySelector("textarea")
+    this.textarea.addEventListener("keydown", (evt) => {
+      if (this.locked) return
 
-      this.focus();
-      if (evt.code === "Enter") this.#endInput();
+      this.focus()
+      if (evt.code === "Enter") this.endInput()
       else if (evt.code === "Backspace") {
-        if (this.#input_length <= 0) evt.preventDefault();
-        else this.#input_length--;
-      } else this.#input_length++;
-    });
+        if (this.input_length <= 0) evt.preventDefault()
+        else this.input_length--
+      } else this.input_length++
+    })
   }
 
   /* -------------------------- private methods -------------------------- */
-  #endInput() {
-    this.#input_value = this.#container.value.slice(this.#input_start_position);
-    this.#end_input_callback(this.#input_value);
-    this.#container.value += "\n";
+  endInput() {
+    this.input_value = this.textarea.value.slice(this.input_start_position)
+    this.textarea.value += "\n"
 
-    this.#locked = true;
-    this.#input_start_position = 0;
-    this.#input_length = 0;
-    this.#input_value = "";
-    this.#container.readOnly = true;
+    this.locked = true
+    this.input_start_position = 0
+    this.input_length = 0
+    this.textarea.readOnly = true
+
+    this.end_input_callback(this.input_value)
+    this.input_value = ""
   }
 
   /* -------------------------- public methods -------------------------- */
   startInput() {
-    this.#locked = false;
-    this.#container.readOnly = false;
-    this.#input_start_position = this.#container.value.length;
-    this.focus();
+    this.locked = false
+    this.textarea.readOnly = false
+    this.input_start_position = this.textarea.value.length
+    this.focus()
   }
 
   focus() {
-    const current_position = this.#container.value.length;
-    this.#container.setSelectionRange(current_position, current_position);
-    this.#container.focus();
+    const current_position = this.textarea.value.length
+    this.textarea.setSelectionRange(current_position, current_position)
+    this.textarea.focus()
   }
 
   print(value) {
-    this.#container.value += value;
+    this.textarea.value += value
   }
 
   clear() {
-    this.#locked = true;
-    this.#input_start_position = 0;
-    this.#input_length = 0;
-    this.#input_value = "";
-    this.#container.value = "";
+    this.locked = true
+    this.input_start_position = 0
+    this.input_length = 0
+    this.input_value = ""
+    this.textarea.value = ""
   }
 }

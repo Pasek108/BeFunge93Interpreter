@@ -1,53 +1,42 @@
-"use strict";
+"use strict"
 
 class Language {
-  #container = null;
-  #pl_lang_items = null;
-  #en_lang_items = null;
+  constructor(initial_language, saveSettingsCallback) {
+    this.saveSettingsCallback = saveSettingsCallback
 
-  constructor(container) {
-    this.#container = container;
-    this.#container.addEventListener("click", () => this.#changeLanguage());
-    this.#loadLanguage();
+    this.container = document.querySelector(".lang")
+    this.container.addEventListener("click", () => this.changeLanguage())
+
+    this.setLanguage(initial_language)
+    this.messages = {}
   }
 
   /* -------------------------- private methods -------------------------- */
-  #loadLanguage() {
-    if (!localStorage.hasOwnProperty("lang")) localStorage.setItem("lang", "pl");
+  changeLanguage() {
+    if (this.language === "en") this.setLanguage("pl")
+    else this.setLanguage("en")
 
-    this.#pl_lang_items = document.querySelectorAll("[lang=pl]");
-    this.#en_lang_items = document.querySelectorAll("[lang=en]");
-
-    if (localStorage.getItem("lang") === "pl") this.#setLangPL();
-    else this.#setLangEN();
+    this.saveSettingsCallback()
   }
 
-  #changeLanguage() {
-    if (localStorage.getItem("lang") === "pl") {
-      localStorage.setItem("lang", "en");
-      this.#setLangEN();
-    } else {
-      localStorage.setItem("lang", "pl");
-      this.#setLangPL();
-    }
+  setLanguage(language) {
+    this.language = language
+    this.container.style.backgroundImage = `url(language/${language}/flag_icon.png)`
+
+    fetch(`language/${language}/page_content.json`)
+      .then((response) => response.json())
+      .then((json) => this.setPageContent(json))
+
+    fetch(`language/${language}/messages.json`)
+      .then((response) => response.json())
+      .then((json) => (this.messages = json))
   }
 
-  #setLangPL() {
-    for (let i = 0; i < this.#en_lang_items.length; i++) {
-      this.#en_lang_items[i].style.display = "none";
-      this.#pl_lang_items[i + 1].style.display = null;
-    }
-
-    this.#container.style.backgroundImage = "url(pl.png)";
-  }
-
-  #setLangEN() {
-    for (let i = 0; i < this.#en_lang_items.length; i++) {
-      this.#en_lang_items[i].style.display = null;
-      this.#pl_lang_items[i + 1].style.display = "none";
-    }
-
-    this.#container.style.backgroundImage = "url(en.png)";
+  setPageContent(json) {
+    Object.keys(json).forEach((key) => {
+      const elem = document.querySelector(`[data-lang-text=${key}]`)
+      if (elem != null) elem.innerText = json[key]
+    })
   }
 
   /* -------------------------- public methods -------------------------- */

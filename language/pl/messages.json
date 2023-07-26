@@ -1,0 +1,6 @@
+{
+  "end_or_unknown_command": "Program zakończył działanie lub napotkał nieznaną instrukcję",
+  "input_number": "Wprowadź liczbę w konsoli",
+  "input_char": "Wprowadź znak w konsoli",
+  "unknown_instruction": "Błąd. Nieznana instrukcja na pozycji"
+}

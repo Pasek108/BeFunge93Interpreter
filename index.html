@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Befunge interpreter</title>
+    <meta name="description" content="Online BeFunge 93 interpreter with grid visualisation, debugging tools and nyan cats animations" />
+    <meta name="keywords" content="Online BeFunge 93, BeFunge 93, BeFunge 93 interpreter, nyan cats" />
+    <meta name="author" content="Artur Pas" />
+    <meta name="robots" content="index, follow" />
+    <title>Befunge 93 interpreter</title>
 
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Squada+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" />
 
+    <!-- --------------- style --------------- -->
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/grid.css" />
+    <link rel="stylesheet" href="css/interface.css" />
+
+    <!-- --------------- scripts --------------- -->
+    <script src="js/Language.js" defer></script>
+    <script src="js/Settings.js" defer></script>
     <script src="js/Grid.js" defer></script>
     <script src="js/Code.js" defer></script>
     <script src="js/Stack.js" defer></script>
     <script src="js/Console.js" defer></script>
-
-    <script src="js/Language.js" defer></script>
     <script src="js/Popup.js" defer></script>
 
     <script src="nyan_cats/default/nyancat_default.js" defer></script>
@@ -33,75 +43,39 @@
   </head>
 
   <body>
-    <a class="author" href="https://github.com/Pasek108" target="_blank">
-      <i class="fab fa-github"></i>
-      <div>A</div>
-      <div>r</div>
-      <div>t</div>
-      <div>u</div>
-      <div>r</div>
-      <span></span>
-      <div>P</div>
-      <div>a</div>
-      <div>s</div>
-    </a>
-
-    <div class="header">
-      <span>Befunge 93 Interpreter</span>
-
-      <div class="lang"></div>
-
-      <div class="nyancat-menu">
-        <div class="button" title="NyanCat menu">
-          <i class="fas fa-info"></i>
-        </div>
-
-        <div class="content">
-          <div class="default" title="Nyan Cat"></div>
-          <div class="gameboy" title="Gameboy Cat"></div>
-          <div class="rasta" title="Rasta Cat"></div>
-          <div class="christmas" title="Christmas Cat"></div>
-          <div class="mexican" title="Mexican Cat"></div>
-        </div>
+    <header>
+      <div class="logo">
+        <span>Befunge 93 Interpreter</span>
+        <div class="lang"></div>
       </div>
 
-      <div class="buttons">
-        <div class="info" title="[ PL ] Informacje&#10;[ EN ] Informations">
-          <i class="fas fa-info"></i>
+      <div class="menu">
+        <div class="nyancat-menu">
+          <div class="button"></div>
 
-          <div class="content" title="">
+          <div class="nyancat-buttons">
+            <div class="default"></div>
+            <div class="gameboy"></div>
+            <div class="rasta"></div>
+            <div class="christmas"></div>
+            <div class="mexican"></div>
+          </div>
+        </div>
+
+        <div class="menu-button info">
+          <i class="fa-solid fa-info"></i>
+
+          <div class="content">
+            <h2>Informations</h2>
             <span class="close"><i class="far fa-times-circle"></i></span>
 
             <h3>BeFunge-93</h3>
             <hr />
 
-            <p>
-              <span lang="pl">
-                BeFunge-93 jest pierwszą wersją ezoterycznego języka programowania BeFunge stworzonego przez Chris'a Presseya w 1993 roku, którego celem było stworzenie języka
-                o możliwie najtrudniejszym do napisania kompilatorze.
-              </span>
-              <span lang="en">
-                BeFunge-93 is first version of esoteric programming language BeFunge invented by Chris Pressey in 1993 with the goal of being as difficult to compile as
-                possible.
-              </span>
-            </p>
+            <p data-lang-text="description1"></p>
+            <p data-lang-text="description2"></p>
 
-            <p>
-              <span lang="pl">
-                Kod jest ułożony w 2-wymiarowej tablicy instrukcji o wymiarach 80x25 i wykonywany poprzez poruszanie się w dowolnym kierunku wykonując instrukcję zanjdującą
-                się w obecnym miejscu tablicy. BeFunge-93 przechowuje dane na pojedyńczym stosie, lecz może również zapisywać i odczytywać zawartość dowolnej komórki tablicy,
-                w wyniku czego kod programu może byc samomodyfikowalny.
-              </span>
-              <span lang="en">
-                Code is laid out on a two-dimensional grid of instructions of size 80x25 and executed by moving in any direction executing command located in current place of
-                grid. BeFunge-93 stores data on single stack, but it can also read and write the contents of any cell in the grid, thereby program code can be self-modifying.
-              </span>
-            </p>
-
-            <h3>
-              <span lang="pl">Przykładowe programy</span>
-              <span lang="en">Example programs</span>
-            </h3>
+            <h3 data-lang-text="example_programs"></h3>
             <hr />
 
             <details>
@@ -110,9 +84,31 @@
                 <span lang="en">N-ty wyraz ciągu 2<sup>n + 1</sup> - 3</span>
               </summary>
               <pre>
-&:00p0`!  #v_001p102pv
-v"błąd n<1"<         >01g1+:01p00g1-`!#v_02g.@
->,,,,,,,,,@          ^       p20+3*2g20<
+>                                     "H"                                      v
+ >                                    "o"                                     v 
+  >                                   "o"                                    v  
+   >                                   ,                                    v   
+    >                                  ,                                   v    
+     >                                 ,                                  v     
+      >                                                                  v      
+       >                                                                v       
+        >                                                              v        
+         >                                                            v         
+          >                                                          v          
+ """       >                                                        v        """
+ lwd,,,     >                                                      @      ,,,r,e
+ """        ^                                                       <        """
+           ^                                                         <          
+          ^                                                           <         
+         ^                                                             <        
+        ^                                                               <       
+       ^                                                                 <      
+      ^                                 ,                                 <     
+     ^                                  ,                                  <    
+    ^                                   ,                                   <   
+   ^                                   "l"                                   <  
+  ^                                    " "                                    < 
+ ^                                     "l"                                     < 
               </pre>
             </details>
 
@@ -145,361 +141,233 @@ v_" ",:.>1+:10g^
           </div>
         </div>
 
-        <div class="instructions" title="[ PL ] Instrukcje&#10;[ EN ] Instructions">
-          <i class="fas fa-bars"></i>
+        <div class="menu-button instructions">
+          <i class="fa-solid fa-bars"></i>
 
-          <div class="content" title="">
+          <div class="content">
+            <h2 data-lang-text="instructions">Informations</h2>
             <span class="close"><i class="far fa-times-circle"></i></span>
 
-            <h3>
-              <span lang="pl">Instrukcje</span>
-              <span lang="en">Instructions</span>
-            </h3>
-            <hr />
-
-            <table lang="pl">
+            <table>
               <tr>
-                <th>Komenda</th>
-                <th>Opis</th>
+                <th data-lang-text="command"></th>
+                <th data-lang-text="description"></th>
               </tr>
               <tr>
                 <td>0 - 9</td>
-                <td>Wkłada na stos odpowiedni numer</td>
+                <td data-lang-text="push_number"></td>
               </tr>
               <tr>
                 <td>+</td>
-                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B + A</td>
+                <td data-lang-text="add_numbers"></td>
               </tr>
               <tr>
                 <td>-</td>
-                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B − A</td>
+                <td data-lang-text="substract_numbers"></td>
               </tr>
               <tr>
                 <td>*</td>
-                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B * A</td>
+                <td data-lang-text="multiply_numbers"></td>
               </tr>
               <tr>
                 <td>/</td>
-                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos wartość B / A zaokrągloną w dół</td>
+                <td data-lang-text="divide_numbers"></td>
               </tr>
               <tr>
                 <td>%</td>
-                <td>Ściąga ze stosu kolejno A oraz B, następnie wkłada na stos resztę z dzielenia całkowitego B / A</td>
+                <td data-lang-text="modulo"></td>
               </tr>
               <tr>
                 <td>!</td>
-                <td>Ściąga ze stosu wartość A, jeśli jest równa 0 wkłada na stos wartość 1, w przeciwnym wypadku 0</td>
+                <td data-lang-text="negation"></td>
               </tr>
               <tr>
                 <td>`</td>
-                <td>Ściąga ze stosu kolejno A oraz B, jeśli B > A wkłada na stos wartość 1, w przeciwnym wypadku 0</td>
+                <td data-lang-text="compare"></td>
               </tr>
               <tr>
                 <td>></td>
-                <td>Ustawia kierunek wykonywania programu w prawo</td>
+                <td data-lang-text="direction_right"></td>
               </tr>
               <tr>
                 <td><</td>
-                <td>Ustawia kierunek wykonywania programu w lewo</td>
+                <td data-lang-text="direction_left"></td>
               </tr>
               <tr>
                 <td>^</td>
-                <td>Ustawia kierunek wykonywania programu do góry</td>
+                <td data-lang-text="direction_top"></td>
               </tr>
               <tr>
                 <td>v</td>
-                <td>Ustawia kierunek wykonywania programu do dółu</td>
+                <td data-lang-text="direction_bottom"></td>
               </tr>
               <tr>
                 <td>?</td>
-                <td>Ustawia losowy kierunek wykonywania programu</td>
+                <td data-lang-text="direction_random"></td>
               </tr>
               <tr>
                 <td>_</td>
-                <td>Ściąga ze stosu wartość A, jeśli A jest równe 0 ustawia kierunek w prawo, w przeciwnym wypadku w lewo</td>
+                <td data-lang-text="direction_horizontal_condition"></td>
               </tr>
               <tr>
                 <td>|</td>
-                <td>Ściąga ze stosu wartość A, jeśli A jest równe 0 ustawia kierunek do dołu, w przeciwnym wypadku do góry</td>
+                <td data-lang-text="direction_vertical_condition"></td>
               </tr>
               <tr>
                 <td>"</td>
-                <td>Przełącza czytanie znaków (wkłada na stos wartości ASCII napotkanych znaków aż do następnego ")</td>
+                <td data-lang-text="string_mode"></td>
               </tr>
               <tr>
                 <td>:</td>
-                <td>Duplikuje wartośc na szczycie stosu</td>
+                <td data-lang-text="duplicate"></td>
               </tr>
               <tr>
                 <td>\</td>
-                <td>Zamienia miejscami dwie wartości na szczycie stosu</td>
+                <td data-lang-text="swap"></td>
               </tr>
               <tr>
                 <td>$</td>
-                <td>Usuwa wartość ze szczytu stosu</td>
+                <td data-lang-text="pop"></td>
               </tr>
               <tr>
                 <td>.</td>
-                <td>Ściąga ze stosu wartośc A i wypisuje ją w konsoli jako numer</td>
+                <td data-lang-text="output_int"></td>
               </tr>
               <tr>
                 <td>,</td>
-                <td>Ściąga ze stosu wartośc A i wypisuje ją w konsoli jako znak ASCII</td>
+                <td data-lang-text="output_char"></td>
               </tr>
               <tr>
                 <td>#</td>
-                <td>Pomija następną napotkaną instrukcje w bieżącym kierunku</td>
+                <td data-lang-text="skip"></td>
               </tr>
               <tr>
                 <td>g</td>
-                <td>Ściąga ze stosu kolejno Y i X, następnie wkłada na stos wartość ASCII znaku w komórce tabeli o współrzędnych [Y, X]</td>
+                <td data-lang-text="get"></td>
               </tr>
               <tr>
                 <td>p</td>
-                <td>Ściąga ze stosu kolejno Y, X i V, następnie zmienia znak w komórce tabeli o współrzędnych [Y, X] na znak ASCII o wartości V</td>
+                <td data-lang-text="put"></td>
               </tr>
               <tr>
                 <td>&</td>
-                <td>pobiera od użytkownika liczbę w konsoli i wkłada ją na stos</td>
+                <td data-lang-text="input_int"></td>
               </tr>
               <tr>
                 <td>~</td>
-                <td>Pobiera od użytkownika znak w konsoli i wkłada jego wartość ASCII na stos</td>
+                <td data-lang-text="input_char"></td>
               </tr>
               <tr>
                 <td>@</td>
-                <td>Kończy działanie programu</td>
-              </tr>
-            </table>
-
-            <table lang="en">
-              <tr>
-                <th>Command</th>
-                <th>Description</th>
-              </tr>
-              <tr>
-                <td>0 - 9</td>
-                <td>Push corresponding number onto the stack</td>
-              </tr>
-              <tr>
-                <td>+</td>
-                <td>Pop two values A and B, then push the result of B + A</td>
-              </tr>
-              <tr>
-                <td>-</td>
-                <td>Pop two values A and B, then push the result of B - A</td>
-              </tr>
-              <tr>
-                <td>*</td>
-                <td>Pop two values A and B, then push the result of B * A</td>
-              </tr>
-              <tr>
-                <td>/</td>
-                <td>Pop two values A and B, then push the result of B / A rounded down</td>
-              </tr>
-              <tr>
-                <td>%</td>
-                <td>Pop two values A and B, then push the remainder of the integer division of B / A</td>
-              </tr>
-              <tr>
-                <td>!</td>
-                <td>Pop value A. If A is equal to 0, push 1, otherwise zero</td>
-              </tr>
-              <tr>
-                <td>`</td>
-                <td>Pop two values A and B, if B > A, push 1, otherwise zero</td>
-              </tr>
-              <tr>
-                <td>></td>
-                <td>Sets direction to the right</td>
-              </tr>
-              <tr>
-                <td><</td>
-                <td>Sets direction to the left</td>
-              </tr>
-              <tr>
-                <td>^</td>
-                <td>Sets direction to the top</td>
-              </tr>
-              <tr>
-                <td>v</td>
-                <td>Sets direction to the bottom</td>
-              </tr>
-              <tr>
-                <td>?</td>
-                <td>Sets random direction</td>
-              </tr>
-              <tr>
-                <td>_</td>
-                <td>Pop value A, if A is equal to the 0 set direction to the right, otherwise to the left</td>
-              </tr>
-              <tr>
-                <td>|</td>
-                <td>Pop value A, if A is equal to the 0 set direction to the bottom, otherwise to the top</td>
-              </tr>
-              <tr>
-                <td>"</td>
-                <td>Toggle stringmode (push each character's ASCII value all the way up to the next ")</td>
-              </tr>
-              <tr>
-                <td>:</td>
-                <td>Duplicate top stack value</td>
-              </tr>
-              <tr>
-                <td>\</td>
-                <td>Swap top stack values</td>
-              </tr>
-              <tr>
-                <td>$</td>
-                <td>Pop top of stack and discard</td>
-              </tr>
-              <tr>
-                <td>.</td>
-                <td>Pop value A and output it as integer</td>
-              </tr>
-              <tr>
-                <td>,</td>
-                <td>Pop value A and output it as ASCII character</td>
-              </tr>
-              <tr>
-                <td>#</td>
-                <td>Jump over next command in the current direction</td>
-              </tr>
-              <tr>
-                <td>g</td>
-                <td>Pop two value Y i X, then push the ASCII value of the character at that position in the program</td>
-              </tr>
-              <tr>
-                <td>p</td>
-                <td>Pop three value Y, X i V, then change the character at the position [Y, X] in the program to the character with ASCII value V</td>
-              </tr>
-              <tr>
-                <td>&</td>
-                <td>Get integer from user and push it</td>
-              </tr>
-              <tr>
-                <td>~</td>
-                <td>Get ASCII character from user and push it</td>
-              </tr>
-              <tr>
-                <td>@</td>
-                <td>End program</td>
+                <td data-lang-text="end"></td>
               </tr>
             </table>
           </div>
         </div>
 
-        <div class="settings" title="[ PL ] Ustawienia&#10;[ EN ] Settings">
-          <i class="fas fa-cog"></i>
+        <div class="menu-button help">
+          <i class="fa-solid fa-question"></i>
 
-          <div class="content" title="">
+          <div class="content">
             <span class="close"><i class="far fa-times-circle"></i></span>
 
-            <h3>
-              <span lang="pl">Ustawienia</span>
-              <span lang="en">Settings</span>
-            </h3>
+            <h3 data-lang-text="help"></h3>
             <hr />
-
-            <p>
-              <span lang="pl">Szybkość wskaźnika</span>
-              <span lang="en">Pointer speed</span>
-            </p>
-            <div class="setting">
-              <input type="range" min="1" max="120" value="120" step="1" id="pointer_speed" />
-              <label for="pointer_speed">120</label>
-            </div>
-
-            <p>
-              <span lang="pl">Kolor wskaźnika</span>
-              <span lang="en">Pointer color</span>
-            </p>
-            <div class="setting">
-              <input type="color" value="#ffd000" id="pointer_color" />
-              <label for="pointer_color">#ffd000</label>
-            </div>
-
-            <p>
-              <span lang="pl">Kolor punktu zatrzymania</span>
-              <span lang="en">Breakpoint color</span>
-            </p>
-            <div class="setting">
-              <input type="color" value="#ff0000" id="breakpoint_color" />
-              <label for="breakpoint_color">#ff0000</label>
-            </div>
-
-            <p>
-              <span lang="pl">Siatka</span>
-              <span lang="en">Grid</span>
-            </p>
-            <div class="setting">
-              <input type="radio" checked="true" name="show_grid" id="show_grid_on" />
-              <label for="show_grid_on">
-                <span lang="pl">Włączona</span>
-                <span lang="en">Turn on</span>
-              </label>
-
-              <input type="radio" name="show_grid" id="show_grid_off" />
-              <label for="show_grid_off">
-                <span lang="pl">Wyłączona</span>
-                <span lang="en">Turn off</span>
-              </label>
-            </div>
           </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="settings">
+      <div class="colors">
+        <div class="color-picker select">
+          <label for="select_color" class="picked-color"></label>
+          <input type="color" value="#34aaff" id="select_color" />
+          <label for="select_color" data-lang-text="select"></label>
+        </div>
+
+        <div class="color-picker pointer">
+          <label for="pointer_color" class="picked-color"></label>
+          <input type="color" value="#ffd000" id="pointer_color" />
+          <label for="pointer_color" data-lang-text="pointer"></label>
+        </div>
+
+        <div class="color-picker one_time_breakpoint">
+          <label for="one_time_breakpoint_color" class="picked-color"></label>
+          <input type="color" value="#ff0000" id="one_time_breakpoint_color" />
+          <label for="one_time_breakpoint_color" data-lang-text="one_time_breakpoint"></label>
+        </div>
+
+        <div class="color-picker breakpoint">
+          <label for="breakpoint_color" class="picked-color"></label>
+          <input type="color" value="#a600ff" id="breakpoint_color" />
+          <label for="breakpoint_color" data-lang-text="breakpoint"></label>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="speed">
+          <label data-lang-text="pointer_speed"></label>
+          <input type="range" min="1" max="60" value="60" step="1" id="pointer_speed" />
+          <span>60</span>
+        </div>
+
+        <div class="show-grid">
+          <input type="checkbox" id="show_grid" checked />
+          <label for="show_grid" data-lang-text="show_grid"></label>
         </div>
       </div>
     </div>
 
-    <div class="grid" title="[ PL ] Wciśnij lewy przycisk myszy aby dodać punkt przerwania&#10;[ EN ] Press left mouse button to add breakpoint"></div>
+    <div class="grid"></div>
+
+    <div class="controls">
+      <button class="init">
+        <i class="fa-solid fa-file-arrow-up"></i>
+        <span data-lang-text="load"></span>
+      </button>
+
+      <button class="execute">
+        <i class="fa-solid fa-forward-fast"></i>
+        <span data-lang-text="execute"></span>
+      </button>
+
+      <button class="run">
+        <i class="fa-solid fa-play"></i>
+        <span data-lang-text="run"></span>
+      </button>
+
+      <button class="step">
+        <i class="fa-solid fa-forward-step"></i>
+        <span data-lang-text="step"></span>
+      </button>
+
+      <button class="stop">
+        <i class="fa-solid fa-stop"></i>
+        <span data-lang-text="stop"></span>
+      </button>
+    </div>
 
     <div class="interface">
       <div class="code">
-        <h5>
-          <span lang="pl">Kod programu</span>
-          <span lang="en">Program code</span>
-        </h5>
-        <textarea cols="80" title="[ PL ] Zaznacz tekst i wciśnij prawy przycisk myszki aby go odwrócić&#10;[ EN ] Select text and press right mouse button to reverse it">
-"!dlrow ,olleH",,,,,,,,,,,,,@</textarea
-        >
+        <h5 data-lang-text="program_code"></h5>
+        <textarea cols="80" rows="25" wrap="hard" maxlength="2000">"!dlrow ,olleH",,,,,,,,,,,,,@</textarea>
       </div>
 
       <div class="stack">
-        <h5>
-          <span lang="pl">Stos</span>
-          <span lang="en">Stack</span>
-        </h5>
+        <h5 data-lang-text="stack"></h5>
         <textarea class="scroll" cols="5" disabled></textarea>
       </div>
 
       <div class="console">
-        <h5>
-          <span lang="pl">Konsola</span>
-          <span lang="en">Console</span>
-        </h5>
+        <h5 data-lang-text="console"></h5>
         <textarea readonly></textarea>
-
-        <div class="controls">
-          <button class="init">
-            <span lang="pl">Załaduj</span>
-            <span lang="en">Load</span>
-          </button>
-
-          <button class="run">
-            <span lang="pl">Uruchom</span>
-            <span lang="en">Run</span>
-          </button>
-
-          <button class="step">
-            <span lang="pl">Krok</span>
-            <span lang="en">Step</span>
-          </button>
-
-          <button class="stop">
-            <span lang="pl">Stop</span>
-            <span lang="en">Stop</span>
-          </button>
-        </div>
       </div>
     </div>
+
+    <footer>
+      &copy; Copyright 2023
+      <a href="https://github.com/Pasek108" target="_blank">Artur Pas <i class="fab fa-github"></i></a>
+    </footer>
   </body>
 </html>

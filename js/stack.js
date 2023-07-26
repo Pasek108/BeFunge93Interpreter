@@ -1,98 +1,99 @@
-"use strict";
+"use strict"
 
 class Stack {
-  #container = null;
-  #stack = [];
-
-  constructor(container) {
-    this.#container = container;
+  constructor() {
+    this.container = document.querySelector(".stack textarea")
+    this.stack = []
   }
 
-  /* -------------------------- private methods -------------------------- */
-
-  /* -------------------------- public methods -------------------------- */
   put(value) {
-    this.#container.value = `${value}\n` + this.#container.value;
-    this.#stack.push(value);
+    this.container.value = `${value}\n` + this.container.value
+    this.stack.push(value)
   }
 
   get() {
-    if (this.#stack.length === 0) return 0;
+    if (this.stack.length === 0) return 0
 
-    const value = this.#stack.pop();
+    const value = this.stack.pop()
 
-    let stack_text = this.#container.value.split("\n");
-    stack_text.shift();
-    this.#container.value = stack_text.join("\n");
+    let new_stack_text = ""
+    let remove_end = false
 
-    return value;
+    for (let i = 0; i < this.container.value.length; i++) {
+      if (remove_end) new_stack_text += this.container.value[i]
+      if (this.container.value[i] === "\n") remove_end = true
+    }
+
+    this.container.value = new_stack_text
+
+    return value
   }
 
   add() {
-    const a = this.get();
-    const b = this.get();
+    const a = this.get()
+    const b = this.get()
 
     this.put(b + a)
   }
 
-  substract() {
-    const a = this.get();
-    const b = this.get();
+  sub() {
+    const a = this.get()
+    const b = this.get()
 
     this.put(b - a)
   }
 
-  multiply() {
-    const a = this.get();
-    const b = this.get();
+  mul() {
+    const a = this.get()
+    const b = this.get()
 
     this.put(b * a)
   }
 
-  divide() {
-    const a = this.get();
-    const b = this.get();
+  div() {
+    const a = this.get()
+    const b = this.get()
 
-    this.put(a ? Math.floor(b / a) : NaN);
+    this.put(a ? Math.floor(b / a) : NaN)
   }
 
-  modulo() {
-    const a = this.get();
-    const b = this.get();
+  mod() {
+    const a = this.get()
+    const b = this.get()
 
-    this.put(b % a);
+    this.put(b % a)
   }
 
   swap() {
-    const a = this.get();
-    const b = this.get();
+    const a = this.get()
+    const b = this.get()
 
-    this.put(a);
-    this.put(b);
+    this.put(a)
+    this.put(b)
   }
 
-  duplicate() {
-    const a = this.get();
+  dup() {
+    const a = this.get()
 
-    this.put(a);
-    this.put(a);
+    this.put(a)
+    this.put(a)
   }
 
-  negate() {
-    const a = this.get();
+  neg() {
+    const a = this.get()
 
-    this.put(+!a);
+    this.put(+!a)
   }
 
-  compare() {
-    const a = this.get();
-    const b = this.get();
+  cmp() {
+    const a = this.get()
+    const b = this.get()
 
     this.put(+(b > a))
   }
 
   clear() {
-    this.#stack = [];
-    this.#container.value = "";
+    this.stack = []
+    this.container.value = ""
   }
 }

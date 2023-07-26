@@ -1,0 +1,271 @@
+.flex(@direction: row, @align: normal, @justify: normal) {
+  display: flex;
+  flex-direction: @direction;
+  align-items: @align;
+  justify-content: @justify;
+}
+
+.position(@position: static, @top: auto, @right: auto, @bot: auto, @left: auto, @zindex: auto) {
+  position: @position;
+  top: @top;
+  right: @right;
+  bottom: @bot;
+  left: @left;
+  z-index: @zindex;
+}
+
+/* ----------------------------- header ----------------------------- */
+header {
+  .flex(row, center, space-between);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: 80rem;
+  max-width: 100%;
+  margin-bottom: 0.25rem;
+  font-size: 2rem;
+}
+
+/* ----------------------------- logo ----------------------------- */
+.logo {
+  .flex(row, center, space-between);
+
+  span {
+    font-family: 'Squada One', cursive;
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    white-space: nowrap;
+  }
+
+  .lang {
+    background-color: #00000037;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 51% 50%;
+    min-width: 2.5rem;
+    height: 1.75rem;
+    margin: 0.25rem 0.5rem 0 0.75rem;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+}
+
+/* ----------------------------- menu ----------------------------- */
+.menu {
+  .flex(row, center, flex-start);
+  gap: 0.25rem;
+  max-width: 100%;
+
+  .menu-button {
+    position: relative;
+    .flex(row, center, center);
+    background-color: #656565;
+    width: 2.8rem;
+    height: 2.5rem;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+      background-color: #1a71e4;
+    }
+
+    &:not(.active) .content {
+      visibility: hidden;
+    }
+  }
+
+  .content {
+    .position(absolute, 2.5rem, 0, @zindex: 2);
+    background-color: whitesmoke;
+    max-width: 85vw;
+    max-height: 90vh;
+    width: 50rem;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    color: black;
+    text-align: justify;
+    font-size: 0.9rem;
+    visibility: visible;
+    cursor: default;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: initial;
+      width: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    .close {
+      .position(absolute, 1rem, 1.5rem);
+      font-size: 1.75rem;
+      cursor: pointer;
+    }
+
+    h2 {
+      font-family: 'Squada One', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: normal;
+      cursor: text;
+    }
+
+    h3 {
+      font-size: 1.075rem;
+      cursor: text;
+    }
+
+    hr {
+      margin: 0.35rem 0 0.75rem 0;
+      border: none;
+      border-top: 1px solid black;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      cursor: text;
+    }
+
+    summary {
+      width: fit-content;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    pre {
+      padding-left: 1rem;
+      margin: 0;
+      font-family: monospace !important;
+    }
+
+    table {
+      width: 100%;
+      border: 0.1px solid black;
+      border-collapse: collapse;
+      border-spacing: 0;
+
+      td,
+      th {
+        padding: 0.5rem;
+        border: 0.1px solid black;
+        text-align: justify;
+      }
+
+      th {
+        background-color: #bbbbbb;
+        font-weight: bold;
+      }
+
+      tr td:first-of-type {
+        font-family: monospace;
+      }
+    }
+  }
+}
+
+/* ----------------------------- nyan cat ----------------------------- */
+.nyancat-menu {
+  position: relative;
+  width: 2.8rem;
+  height: 2.5rem;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  width: 19.7rem;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .button {
+    position: absolute;
+    z-index: 2;
+    background-color: #656565;
+    background-image: url("../nyan_cats/nyancat_icon.png");
+    background-repeat: no-repeat;
+    background-size: 70% 65%;
+    background-position: 51% 50%;
+    width: 2.8rem;
+    height: 2.5rem;
+    padding: 0.4rem 0 0.25rem 0;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 1s;
+    transform: translate(16.9rem);
+
+    &:hover {
+      background-color: #fb59e3;
+    }
+  } 
+
+  &.active {
+    .button {
+      background-color: #fb59e3;
+      transform: translate(0);
+    }
+
+    .nyancat-buttons {
+      transform: translate(0);
+    }
+  }
+
+  .nyancat-buttons {
+    .position(absolute, 0, @left: 0);
+    .flex(row, flex-start, flex-start);
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 0.5rem 0 3.1rem;
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    background-color: #00000037;
+    transition: transform 1s;
+    transform: translate(16.9rem);
+
+    div {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 51% 50%;
+      height: 2.5rem;
+      width: 2.8rem;
+      cursor: pointer;
+
+      &:hover,
+      &.active {
+        background-color: #00000037;
+      }
+    }
+  }
+}
+
+.default {
+  background-image: url("../nyan_cats/default/nyancat_default.png");
+}
+
+.rasta {
+  background-image: url("../nyan_cats/rasta/nyancat_rasta.png");
+}
+
+.gameboy {
+  background-image: url("../nyan_cats/gameboy/nyancat_gameboy.png");
+}
+
+.mexican {
+  background-image: url("../nyan_cats/mexican/nyancat_mexican.png");
+  background-size: 100% 72%;
+}
+
+.japanese {
+  background-image: url("../nyan_cats/japanese/nyancat_japanese.png");
+}
+
+.christmas {
+  background-image: url("../nyan_cats/christmas/nyancat_christmas.png");
+}

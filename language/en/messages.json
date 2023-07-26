@@ -1,0 +1,6 @@
+{
+  "end_or_unknown_command": "Program ended or met unknown instruction",
+  "input_number": "Input number in console",
+  "input_char": "Input character in console",
+  "unknown_instruction": "Error. Unknown instruction on position"
+}
