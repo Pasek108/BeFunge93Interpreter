@@ -1,6 +1,6 @@
 "use strict"
 
-class Program {
+class Interpreter {
   direction = { x: 1, y: 0 }
   text_mode = false
   skip = false
@@ -261,4 +261,4 @@ class Program {
   }
 }
 
-const program = new Program()
+const interpreter = new Interpreter()
