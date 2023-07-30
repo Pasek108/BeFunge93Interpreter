@@ -77,9 +77,7 @@ class Interpreter {
     this.console.clear()
     this.stack.clear()
     this.grid.clear()
-
-    const code = this.code.getCode()
-    this.grid.loadCode(code)
+    this.grid.loadCode(this.code.getCode())
   }
 
   stepError() {
@@ -149,7 +147,8 @@ class Interpreter {
     const command = this.grid.getCurrentCommand()
 
     if (this.text_mode && command !== '"') {
-      this.stack.put(command.charCodeAt(0))
+      if (command === "") this.stack.put(" ".charCodeAt(0));
+      else this.stack.put(command.charCodeAt(0))
       return
     }
 

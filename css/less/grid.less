@@ -14,6 +14,7 @@
   z-index: @zindex;
 }
 
+/* ----------------------------- settings ----------------------------- */
 .settings {
   .flex(row, center, space-between);
   gap: 0.5rem;
@@ -27,82 +28,84 @@
   color: black;
   font-size: 0.9rem;
   white-space: nowrap;
+}
 
-  .colors {
-    .flex(row, center, flex-start);
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-right: 1rem;
+.colors {
+  .flex(row, center, flex-start);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-right: 1rem;
 
-    .select .picked-color {
-      background-color: #34aaff;
-    }
-
-    .pointer .picked-color {
-      background-color: #ffd000;
-    }
-
-    .one_time_breakpoint .picked-color {
-      background-color: #ff0000;
-    }
-
-    .breakpoint .picked-color {
-      background-color: #a600ff;
-    }
-
-    .color-picker {
-      position: relative;
-      .flex(row, center, center);
-      gap: 0.25rem;
-
-      & > * {
-        cursor: pointer;
-      }
-
-      input {
-        .position(absolute, @bot: 0, @left: 0, @zindex: -1);
-        width: 0;
-        height: 0;
-      }
-
-      .picked-color {
-        width: 1rem;
-        height: 1rem;
-        border: 1px solid black;
-      }
-    }
+  .select .picked-color {
+    background-color: #34aaff;
   }
 
-  .right {
-    .flex(row, center, flex-start);
-    gap: 0.5rem;
-    flex-wrap: wrap;
+  .pointer .picked-color {
+    background-color: #ffd000;
+  }
 
-    .speed {
-      .flex(row, center, center);
-      gap: 0.25rem;
-      margin-right: 0.5rem;
+  .one_time_breakpoint .picked-color {
+    background-color: #ff0000;
+  }
 
-      input {
-        cursor: pointer;
-      }
+  .breakpoint .picked-color {
+    background-color: #a600ff;
+  }
+
+  .color-picker {
+    position: relative;
+    .flex(row, center, center);
+    gap: 0.25rem;
+
+    & > * {
+      cursor: pointer;
     }
 
-    .show-grid {
-      .flex(row, center, center);
-      gap: 0.25rem;
+    input {
+      .position(absolute, @bot: 0, @left: 0, @zindex: -1);
+      width: 0;
+      height: 0;
+    }
 
-      * {
-        cursor: pointer;
-      }
+    .picked-color {
+      width: 1rem;
+      height: 1rem;
+      border: 1px solid black;
     }
   }
 }
 
+.other {
+  .flex(row, center, flex-start);
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  .speed {
+    .flex(row, center, center);
+    gap: 0.25rem;
+    margin-right: 0.5rem;
+
+    input {
+      cursor: pointer;
+    }
+  }
+
+  .show-grid {
+    .flex(row, center, center);
+    gap: 0.25rem;
+
+    * {
+      cursor: pointer;
+    }
+  }
+}
+
+/* ----------------------------- grid ----------------------------- */
 .grid {
   display: grid;
   grid-template-columns: repeat(80, 1rem);
   max-width: 100%;
+  width: 80rem;
   border: 1px solid black;
   border-radius: 0.3rem;
   background-color: whitesmoke;
@@ -142,33 +145,34 @@
   span {
     font-family: "Roboto", sans-serif;
   }
+}
 
-  .tooltip {
-    .flex(row, center, center);
-    background-color: black;
-    width: 3rem;
-    height: 1rem;
-    padding: 5px 0;
-    border-radius: 6px;
-    display: none;
-    color: whitesmoke;
-    text-align: center;
-    pointer-events: none;
+.tooltip {
+  .flex(row, center, center);
+  background-color: black;
+  width: 3rem;
+  height: 1rem;
+  padding: 5px 0;
+  border-radius: 6px;
+  display: none;
+  color: whitesmoke;
+  text-align: center;
+  pointer-events: none;
 
-    &.left {
-      .position(absolute, @left: calc(100% + 3px), @zindex: 1);
-    }
-
-    &.right {
-      .position(absolute, @right: calc(100% + 3px), @zindex: 1);
-    }
+  &.left {
+    .position(absolute, @left: calc(100% + 3px), @zindex: 1);
   }
 
-  &:hover .tooltip {
-    display: flex;
+  &.right {
+    .position(absolute, @right: calc(100% + 3px), @zindex: 1);
   }
 }
 
+.cell:hover .tooltip {
+  display: flex;
+}
+
+/* ----------------------------- controls ----------------------------- */
 .controls {
   .flex(row, flex-end, space-evenly);
   gap: 0.2rem;

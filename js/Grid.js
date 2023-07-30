@@ -101,8 +101,12 @@ class Grid {
 
     this.pointer_x += x
     this.pointer_y += y
+
     if (this.pointer_x >= this.array_x) this.pointer_x = 0
+    else if (this.pointer_x < 0) this.pointer_x = this.array_x - 1;
+
     if (this.pointer_y >= this.array_y) this.pointer_y = 0
+    else if (this.pointer_y < 0) this.pointer_y = this.array_y - 1;
 
     const new_cell_index = this.pointer_x + this.pointer_y * this.array_x
 

@@ -62,11 +62,11 @@
           </div>
         </div>
 
-        <div class="menu-button info">
+        <div class="menu-button informations">
           <i class="fa-solid fa-info"></i>
 
           <div class="content">
-            <h2>Informations</h2>
+            <h2 data-lang-text="informations"></h2>
             <span class="close"><i class="far fa-times-circle"></i></span>
 
             <h3>BeFunge-93</h3>
@@ -74,70 +74,12 @@
 
             <p data-lang-text="description1"></p>
             <p data-lang-text="description2"></p>
+            <p><span data-lang-text="see_more"></span><a href="https://esolangs.org/wiki/Befunge">https://esolangs.org/wiki/Befunge</a></p>
 
             <h3 data-lang-text="example_programs"></h3>
             <hr />
 
-            <details>
-              <summary>
-                <span lang="pl">N-ty wyraz ciągu 2<sup>n + 1</sup> - 3</span>
-                <span lang="en">N-ty wyraz ciągu 2<sup>n + 1</sup> - 3</span>
-              </summary>
-              <pre>
->                                     "H"                                      v
- >                                    "o"                                     v 
-  >                                   "o"                                    v  
-   >                                   ,                                    v   
-    >                                  ,                                   v    
-     >                                 ,                                  v     
-      >                                                                  v      
-       >                                                                v       
-        >                                                              v        
-         >                                                            v         
-          >                                                          v          
- """       >                                                        v        """
- lwd,,,     >                                                      @      ,,,r,e
- """        ^                                                       <        """
-           ^                                                         <          
-          ^                                                           <         
-         ^                                                             <        
-        ^                                                               <       
-       ^                                                                 <      
-      ^                                 ,                                 <     
-     ^                                  ,                                  <    
-    ^                                   ,                                   <   
-   ^                                   "l"                                   <  
-  ^                                    " "                                    < 
- ^                                     "l"                                     < 
-              </pre>
-            </details>
-
-            <details>
-              <summary>
-                <span lang="pl">Fizz buzz</span>
-                <span lang="en">Fizz buzz</span>
-              </summary>
-              <pre>
->&::3%#v_" zzif",,,,,v
- v     <             <
- > 5%#v_" zzub",,,,,v
-^,+19.<             <
-              </pre>
-            </details>
-
-            <details>
-              <summary>
-                <span lang="pl">Dzielniki liczby</span>
-                <span lang="en">Factors of the number</span>
-              </summary>
-              <pre>
-&10p1.2v
- v\g01:< >" ",.@
- %     ^_^#  -\<
-v_" ",:.>1+:10g^
->       ^
-              </pre>
-            </details>
+            <div class="example-programs"></div>
           </div>
         </div>
 
@@ -145,7 +87,7 @@ v_" ",:.>1+:10g^
           <i class="fa-solid fa-bars"></i>
 
           <div class="content">
-            <h2 data-lang-text="instructions">Informations</h2>
+            <h2 data-lang-text="instructions"></h2>
             <span class="close"><i class="far fa-times-circle"></i></span>
 
             <table>
@@ -269,6 +211,7 @@ v_" ",:.>1+:10g^
           <i class="fa-solid fa-question"></i>
 
           <div class="content">
+            <h2 data-lang-text="help"></h2>
             <span class="close"><i class="far fa-times-circle"></i></span>
 
             <h3 data-lang-text="help"></h3>
@@ -305,7 +248,7 @@ v_" ",:.>1+:10g^
         </div>
       </div>
 
-      <div class="right">
+      <div class="other">
         <div class="speed">
           <label data-lang-text="pointer_speed"></label>
           <input type="range" min="1" max="60" value="60" step="1" id="pointer_speed" />

@@ -1,6 +1,7 @@
 {
   "description1": "BeFunge-93 is first version of esoteric programming language BeFunge invented by Chris Pressey in 1993 with the goal of being as difficult to compile aspossible.",
   "description2": "Code is laid out on a two-dimensional grid of instructions of size 80x25 and executed by moving in any direction executing command located in current place of grid. BeFunge-93 stores data on single stack, but it can also read and write the contents of any cell in the grid, thereby program code can be self-modifying.",
+  "see_more": "See more on ",
   "command": "Command",
   "description": "Description",
   "push_number": "Push corresponding number onto the stack",
@@ -40,8 +41,9 @@
   "breakpoint": "Breakpoint",
   "pointer": "Pointer",
   "pointer_speed": "Pointer speed",
-  "settings": "Settings",
+  "informations": "Informations",
   "instructions": "Instructions",
+  "help": "Help",
   "load": "Load",
   "execute": "Execute",
   "run": "Run",

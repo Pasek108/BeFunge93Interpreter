@@ -30,7 +30,7 @@ header {
   .flex(row, center, space-between);
 
   span {
-    font-family: 'Squada One', cursive;
+    font-family: "Squada One", cursive;
     font-size: 2.5rem;
     letter-spacing: -1px;
     white-space: nowrap;
@@ -73,12 +73,12 @@ header {
     }
 
     &:not(.active) .content {
-      visibility: hidden;
+      display: none;
     }
   }
 
   .content {
-    .position(absolute, 2.5rem, 0, @zindex: 2);
+    .position(absolute, 2.5rem, -1px, @zindex: 2);
     background-color: whitesmoke;
     max-width: 85vw;
     max-height: 90vh;
@@ -89,7 +89,7 @@ header {
     color: black;
     text-align: justify;
     font-size: 0.9rem;
-    visibility: visible;
+    display: block;
     cursor: default;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -107,7 +107,7 @@ header {
     }
 
     h2 {
-      font-family: 'Squada One', cursive;
+      font-family: "Squada One", cursive;
       font-size: 2rem;
       margin-bottom: 1rem;
       font-weight: normal;
@@ -117,6 +117,10 @@ header {
     h3 {
       font-size: 1.075rem;
       cursor: text;
+
+      &:not(:first-of-type) {
+        margin-top: 1.5rem;
+      }
     }
 
     hr {
@@ -129,42 +133,69 @@ header {
       margin-bottom: 0.5rem;
       cursor: text;
     }
+  }
+}
 
-    summary {
-      width: fit-content;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-      cursor: pointer;
+details[open] {
+  .fa-caret-right { display: none; }
+  .fa-caret-down { display: inline-block; }
+}
+
+details {
+  .fa-caret-right { display: inline-block; }
+  .fa-caret-down { display: none; }
+}
+
+summary {
+  .flex(row, center, space-between);
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+
+  div {
+    cursor: pointer;
+
+    i {
+      width: 1rem;
     }
+  }
 
-    pre {
-      padding-left: 1rem;
-      margin: 0;
-      font-family: monospace !important;
-    }
+  div.copy {
+    padding: 0.125rem 0.25rem;
+    background-color: unset;
+    color: #0054c1;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
 
-    table {
-      width: 100%;
-      border: 0.1px solid black;
-      border-collapse: collapse;
-      border-spacing: 0;
+pre {
+  padding-left: 1rem;
+  margin: 0;
+  margin-bottom: 1rem;
+  font-family: monospace !important;
+}
 
-      td,
-      th {
-        padding: 0.5rem;
-        border: 0.1px solid black;
-        text-align: justify;
-      }
+table {
+  width: 100%;
+  border: 0.1px solid black;
+  border-collapse: collapse;
+  border-spacing: 0;
 
-      th {
-        background-color: #bbbbbb;
-        font-weight: bold;
-      }
+  td,
+  th {
+    padding: 0.5rem;
+    border: 0.1px solid black;
+    text-align: justify;
+  }
 
-      tr td:first-of-type {
-        font-family: monospace;
-      }
-    }
+  th {
+    background-color: #bbbbbb;
+    font-weight: bold;
+  }
+
+  tr td:first-of-type {
+    font-family: monospace;
   }
 }
 
@@ -204,7 +235,7 @@ header {
     &:hover {
       background-color: #fb59e3;
     }
-  } 
+  }
 
   &.active {
     .button {

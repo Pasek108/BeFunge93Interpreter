@@ -44,5 +44,6 @@ class Popup {
   }
 }
 
-const info = new Popup(".info")
+const info = new Popup(".informations")
 const instructions = new Popup(".instructions")
+const help = new Popup(".help")

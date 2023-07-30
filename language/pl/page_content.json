@@ -1,6 +1,7 @@
 {
   "description1": "BeFunge-93 jest pierwszą wersją ezoterycznego języka programowania BeFunge stworzonego przez Chris'a Presseya w 1993 roku, którego celem było stworzenie języka o możliwie najtrudniejszym do napisania kompilatorze.",
   "description2": "Kod jest ułożony w 2-wymiarowej tablicy instrukcji o wymiarach 80x25 i wykonywany poprzez poruszanie się w dowolnym kierunku wykonując instrukcję zanjdującą się w obecnym miejscu tablicy. BeFunge-93 przechowuje dane na pojedyńczym stosie, lecz może również zapisywać i odczytywać zawartość dowolnej komórki tablicy, w wyniku czego kod programu może byc samomodyfikowalny.",
+  "see_more": "Zobacz więcej na ",
   "command": "Komenda",
   "description": "Opis",
   "push_number": "Wkłada na stos odpowiedni numer",
@@ -40,8 +41,9 @@
   "breakpoint": "Punkt przerwania",
   "pointer": "Wskaźnik",
   "pointer_speed": "Szybkość wskaźnika",
-  "settings": "Ustawienia",
+  "informations": "Informacje",
   "instructions": "Instrukcje",
+  "help": "Pomoc",
   "load": "Załaduj",
   "execute": "Wykonaj",
   "run": "Uruchom",
