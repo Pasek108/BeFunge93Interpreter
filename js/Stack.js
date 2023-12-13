@@ -2,13 +2,16 @@
 
 class Stack {
   constructor() {
-    this.container = document.querySelector(".stack textarea")
+    this.container = document.querySelector(".stack")
+    this.size = this.container.querySelector(".size")
+    this.textarea = this.container.querySelector("textarea")
     this.stack = []
   }
 
   put(value) {
-    this.container.value = `${value}\n` + this.container.value
+    this.textarea.value = `${value}\n` + this.textarea.value
     this.stack.push(value)
+    this.size.innerText = this.stack.length
   }
 
   get() {
@@ -19,12 +22,13 @@ class Stack {
     let new_stack_text = ""
     let remove_end = false
 
-    for (let i = 0; i < this.container.value.length; i++) {
-      if (remove_end) new_stack_text += this.container.value[i]
-      if (this.container.value[i] === "\n") remove_end = true
+    for (let i = 0; i < this.textarea.value.length; i++) {
+      if (remove_end) new_stack_text += this.textarea.value[i]
+      if (this.textarea.value[i] === "\n") remove_end = true
     }
 
-    this.container.value = new_stack_text
+    this.textarea.value = new_stack_text
+    this.size.innerText = this.stack.length
 
     return value
   }
@@ -94,6 +98,7 @@ class Stack {
 
   clear() {
     this.stack = []
-    this.container.value = ""
+    this.textarea.value = ""
+    this.size.innerText = this.stack.length
   }
 }

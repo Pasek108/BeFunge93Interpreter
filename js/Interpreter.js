@@ -9,6 +9,7 @@ class Interpreter {
   running = 0
   stop_execution = false
   pause_execution = false
+  steps = 0
 
   constructor() {
     this.settings = new Settings(this.applySettings.bind(this));
@@ -73,6 +74,8 @@ class Interpreter {
     this.waiting_for_input = false
     this.input_type = ""
     this.stop_execution = false
+    this.running = 0
+    this.steps = 0
 
     this.console.clear()
     this.stack.clear()
@@ -145,6 +148,7 @@ class Interpreter {
     this.grid.movePointer(this.direction.y, this.direction.x)
 
     const command = this.grid.getCurrentCommand()
+    this.steps++;
 
     if (this.text_mode && command !== '"') {
       if (command === "") this.stack.put(" ".charCodeAt(0));
@@ -185,7 +189,7 @@ class Interpreter {
       case "~": this.startInput("char"); break
       case "&": this.startInput("int"); break
       case "?": this.changeDirection(1, 1); break
-      case "@": this.stop_execution = true; break
+      case "@": this.endProgram(); break
       default: this.unknownCommand()
     }
   }
@@ -257,6 +261,11 @@ class Interpreter {
     const position = this.grid.getPointerPosition()
     alert(`${this.settings.language.messages.unknown_instruction} [${position.y}, ${position.x}]`)
     this.stop_execution = true
+  }
+
+  endProgram() {
+    this.stop_execution = true;
+    this.console.print(`\nProgram ended after ${this.steps} steps`)
   }
 }
 

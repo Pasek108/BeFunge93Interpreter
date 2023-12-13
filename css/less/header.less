@@ -51,9 +51,24 @@ header {
 }
 
 /* ----------------------------- menu ----------------------------- */
+@media only screen and (max-width: 670px) {
+  .menu-button {
+    position: static !important;
+  }
+
+  .content {
+    .position(fixed, 0, 0, @zindex: 2) !important;
+    max-width: unset !important;
+    max-height: unset !important;
+    width: 100% !important;
+    height: 100vh !important;
+  }
+}
+
 .menu {
-  .flex(row, center, flex-start);
+  .flex(row, center, flex-end);
   gap: 0.25rem;
+  flex-grow: 1;
   max-width: 100%;
 
   .menu-button {
@@ -62,6 +77,8 @@ header {
     background-color: #656565;
     width: 2.8rem;
     height: 2.5rem;
+    min-width: 2.8rem;
+    min-height: 2.5rem;
     border: 1px solid black;
     border-radius: 0.3rem;
     font-size: 1.5rem;
@@ -137,17 +154,26 @@ header {
 }
 
 details[open] {
-  .fa-caret-right { display: none; }
-  .fa-caret-down { display: inline-block; }
+  .fa-caret-right {
+    display: none;
+  }
+  .fa-caret-down {
+    display: inline-block;
+  }
 }
 
 details {
-  .fa-caret-right { display: inline-block; }
-  .fa-caret-down { display: none; }
+  .fa-caret-right {
+    display: inline-block;
+  }
+  .fa-caret-down {
+    display: none;
+  }
 }
 
 summary {
   .flex(row, center, space-between);
+  gap: 1rem;
   width: 100%;
   margin-bottom: 0.5rem;
   font-weight: bold;
@@ -165,6 +191,7 @@ summary {
     background-color: unset;
     color: #0054c1;
     font-weight: normal;
+    white-space: nowrap;
     cursor: pointer;
   }
 }
@@ -229,8 +256,9 @@ table {
     text-align: center;
     font-size: 1.5rem;
     cursor: pointer;
-    transition: transform 1s;
     transform: translate(16.9rem);
+    will-change: transform;
+    transition: transform 1s;
 
     &:hover {
       background-color: #fb59e3;
@@ -257,8 +285,9 @@ table {
     border: 1px solid black;
     border-radius: 0.3rem;
     background-color: #00000037;
-    transition: transform 1s;
     transform: translate(16.9rem);
+    will-change: transform;
+    transition: transform 1s;
 
     div {
       background-repeat: no-repeat;
