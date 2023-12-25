@@ -1,17 +1,20 @@
 "use strict"
 
 class Interpreter {
-  direction = { x: 1, y: 0 }
-  text_mode = false
-  skip = false
-  waiting_for_input = false
-  input_type = ""
-  running = 0
-  stop_execution = false
-  pause_execution = false
-  steps = 0
+  static STATES = {
+    EDIT: 0,
+    INITIAL: 1, 
+    EXECUTING: 2, 
+    RUNNING: 3, 
+    PAUSED: 3, 
+    WAITING_FOR_INPUT: 5,
+    FINISHED: 6,
+    ERROR: 7 
+  }
 
   constructor() {
+    this.init()
+
     this.settings = new Settings(this.applySettings.bind(this));
     this.fps_interval = 1000 / this.settings.settings.speed
 
@@ -54,6 +57,16 @@ class Interpreter {
     this.stop_button.addEventListener("click", () => this.stop())
   }
 
+  init() {
+    this.direction = { x: 1, y: 0 }
+    this.position = { x: 0, y: 0 }
+
+    this.program_state = this.EDIT
+    this.reading_text = false
+
+    this.steps_counter = 0
+  }
+
   applySettings() {
     this.fps_interval = 1000 / this.settings.settings.speed
     this.grid.showGrid(this.settings.settings.show_grid)
@@ -70,12 +83,12 @@ class Interpreter {
 
     this.direction = { x: 1, y: 0 }
     this.skip = false
-    this.text_mode = false
+    this.reading_text = false
     this.waiting_for_input = false
     this.input_type = ""
     this.stop_execution = false
     this.running = 0
-    this.steps = 0
+    this.steps_counter = 0
 
     this.console.clear()
     this.stack.clear()
@@ -148,9 +161,9 @@ class Interpreter {
     this.grid.movePointer(this.direction.y, this.direction.x)
 
     const command = this.grid.getCurrentCommand()
-    this.steps++;
+    this.steps_counter++;
 
-    if (this.text_mode && command !== '"') {
+    if (this.reading_text && command !== '"') {
       if (command === "") this.stack.put(" ".charCodeAt(0));
       else this.stack.put(command.charCodeAt(0))
       return
@@ -164,14 +177,11 @@ class Interpreter {
     }
 
     switch (command) {
-      case ">": this.changeDirection(1, 0); break
-      case "<": this.changeDirection(-1, 0); break
-      case "^": this.changeDirection(0, -1); break
-      case "v": this.changeDirection(0, 1); break
-      case '"': this.text_mode = !this.text_mode; break
-      case "_": this.ifStatement(0); break
-      case "|": this.ifStatement(1); break
-      case "#": this.skip = true; break
+      case ">": this.setDirection(1, 0); break
+      case "<": this.setDirection(-1, 0); break
+      case "^": this.setDirection(0, -1); break
+      case "v": this.setDirection(0, 1); break
+      case "?": this.setDirection(1, 1); break
       case "+": this.stack.add(); break
       case "-": this.stack.sub(); break
       case "*": this.stack.mul(); break
@@ -182,13 +192,17 @@ class Interpreter {
       case ":": this.stack.dup(); break
       case "!": this.stack.neg(); break
       case "\\": this.stack.swap(); break
+      case '"': this.reading_text = !this.reading_text; break
+      case "_": this.ifStatement(0); break
+      case "|": this.ifStatement(1); break
+      case "#": this.skip = true; break
       case ".": this.console.print(this.stack.get()); break
       case ",": this.console.print(String.fromCharCode(this.stack.get())); break
       case "p": this.putValueInGrid(); break
       case "g": this.getValueFromGrid(); break
       case "~": this.startInput("char"); break
       case "&": this.startInput("int"); break
-      case "?": this.changeDirection(1, 1); break
+      
       case "@": this.endProgram(); break
       default: this.unknownCommand()
     }
@@ -200,7 +214,18 @@ class Interpreter {
   }
 
   /* -------------------------- functions for instructions -------------------------- */
-  changeDirection(x, y) {
+  move() {
+    this.position.x += this.direction.x
+    this.position.y += this.direction.y
+
+    if (this.position.x < 0) this.position.x += this.size.x
+    if (this.position.y < 0) this.position.y += this.size.y
+
+    if (this.position.x >= this.size.x) this.position.x -= this.size.x
+    if (this.position.y >= this.size.y) this.position.y -= this.size.y
+  }
+
+  setDirection(x, y) {
     if (x === 1 && y === 1) {
       const new_x = [1, -1, 0, 0]
       const new_y = [0, 0, -1, 1]
@@ -221,7 +246,7 @@ class Interpreter {
     let new_direction = type * 2
     if (this.stack.get()) new_direction += 1
 
-    this.changeDirection(new_x[new_direction], new_y[new_direction])
+    this.setDirection(new_x[new_direction], new_y[new_direction])
   }
 
   putValueInGrid() {
@@ -265,7 +290,7 @@ class Interpreter {
 
   endProgram() {
     this.stop_execution = true;
-    this.console.print(`\nProgram ended after ${this.steps} steps`)
+    this.console.print(`\nProgram ended after ${this.steps_counter} steps`)
   }
 }
 

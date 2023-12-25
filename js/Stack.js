@@ -17,20 +17,16 @@ class Stack {
   get() {
     if (this.stack.length === 0) return 0
 
-    const value = this.stack.pop()
-
-    let new_stack_text = ""
-    let remove_end = false
-
     for (let i = 0; i < this.textarea.value.length; i++) {
-      if (remove_end) new_stack_text += this.textarea.value[i]
-      if (this.textarea.value[i] === "\n") remove_end = true
+      if (this.textarea.value[i] !== "\n") continue
+
+      this.textarea.value = this.textarea.value.slice(i + 1)
+      break
     }
 
-    this.textarea.value = new_stack_text
     this.size.innerText = this.stack.length
 
-    return value
+    return this.stack.pop()
   }
 
   add() {
