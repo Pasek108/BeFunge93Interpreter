@@ -38,9 +38,8 @@ Languages:
 
 Libraries and frameworks:
 - [LESS](https://lesscss.org)
-- [FontAwesome](https://fontawesome.com) 6.1.1
+- [FontAwesome](https://fontawesome.com) 6.4.0
 - [GoogleFonts](https://fonts.google.com)
-- [canvas-confetti](https://www.npmjs.com/package/canvas-confetti) 1.5.1
   
 Programs:
 - [VSCode](https://code.visualstudio.com)
