@@ -1,4 +1,4 @@
-# BeFunge 93 IDE Readme
+# BeFunge 93 Interpreter Readme
 <details>
   <summary>❓Why my commits often have no names and I'm not using branches❓</summary>
   <ul>
@@ -15,16 +15,18 @@
   * [Features](#features)
   * [Setup](#setup)
   * [Acknowledgements](#acknowledgements)
+ 
+<!--
 * [Details](#details)
   * [User interface](#user-interface)
   * [Project structure](#project-structure)
   * [Code organization](#code-organization)
-
+-->
 <br>
 
 ## Informations
 Befunge 93 interpreter with visualization on grid, debugger and nyan cats pixel animations.<br>
-See [live demo](https://pas-artur.000webhostapp.com/BeFunge93Interpreter/).
+See [live demo](https://pasek108.github.io/BeFunge93Interpreter/).
 
 ![preview](/_for_readme/preview.png)
 
@@ -85,7 +87,7 @@ Programs:
 
 ### Setup
 Ways to run this program: 
-1. Use the [live demo](https://pasek108.github.io/ConnectGame/)
+1. Use the [live demo](https://pasek108.github.io/BeFunge93Interpreter/)
 2. Download this repo and run index.html file
 3. Download this repo and start live server ([VSCode LiveServer Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer), Prepros preview etc.) 
 
@@ -106,6 +108,8 @@ To edit this program:
 - [bedroomlan - befunge playground](https://www.bedroomlan.org/tools/befunge-playground/#prog=gcd,mode=run)
 
 <br>
+
+<!--
 
 ## Details
 This section is a general description of the project required to understand how it works, the exact details are in the code or simply are the code.
@@ -177,3 +181,4 @@ Game class creates and manages:
   - Deer
   - HappyDeer
 
+-->
