@@ -118,6 +118,15 @@ To edit this program:
 
 ## User interface
 
+### Header section
+
+### Program grid
+
+### Program data
+
+### Nyan cats
+
+### Contact
 
 ## Project structure
 - :file_folder: Befunge93Interpreter (project folder)
