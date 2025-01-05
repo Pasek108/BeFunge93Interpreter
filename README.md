@@ -1,38 +1,45 @@
-# BeFunge 93 Interpreter Readme
-<details>
-  <summary>❓Why my commits often have no names and I'm not using branches❓</summary>
-  <ul>
-    <li>I often create with bursts many things at once</li>
-    <li>I don't plan things ahead, I just create things that seems good at that moment</li>
-    <li>Sometimes I have bad internet connection and it is troublesome to send commits</li>
-    <li>I'm coding alone so creating branches and describing commits is not useful for me</li>
-  <ul>
-</details>
+<h1 align="center">Befunge93Interpreter - Readme</h1>
+<p align="center">
+  <strong>
+    BeFunge93 interpreter with grid visualisation, debugging tools and nyan cats animations
+  </strong>
+</p>
 
-## Table of Contents
-* [Informations](#informations)
-  * [Technologies](#technologies)
+<!-- 
+<div align="center">
+  <a href="https://www.ur.edu.pl/pl/kolegia/kolegium-nauk-przyrodniczych">
+    <img src="_for_readme/ur_banner.jpg?">
+  </a>
+</div>-->
+
+<br>
+
+# Table of Contents
+* [Overview :sparkles:](#overview-sparkles)
+  * [About](#about)
   * [Features](#features)
+  * [Technologies](#technologies)
   * [Setup](#setup)
   * [Acknowledgements](#acknowledgements)
- 
-<!--
-* [Details](#details)
+* [Details :scroll:](#details-scroll)
   * [User interface](#user-interface)
   * [Project structure](#project-structure)
   * [Code organization](#code-organization)
--->
+
 <br>
 
-## Informations
-Befunge 93 interpreter with visualization on grid, debugger and nyan cats pixel animations.<br>
-See [live demo](https://pasek108.github.io/BeFunge93Interpreter/).
+# Overview :sparkles:
+
+## About
+This project is a visual interpreter and debugger for the [esoteric programming language](https://en.wikipedia.org/wiki/Esoteric_programming_language) [Befunge93](https://esolangs.org/wiki/Befunge). While this interpreter is not the fastest, I believe it is easy to use for beginners. It also includes five built-in Nyan Cat animations as a fun stress-relief feature.
+
+Check out the [live version](https://pasek108.github.io/BeFunge93Interpreter/).
+
+<br>
 
 ![preview](/_for_readme/preview.png)
 
-----------------------------------
-
-### Technologies
+## Technologies
 Languages:
 - HTML5
 - CSS3
@@ -46,60 +53,58 @@ Libraries and frameworks:
 Programs:
 - [VSCode](https://code.visualstudio.com)
 - [Prepros](https://prepros.io) (auto preview, processing less)
-  
-----------------------------------
 
-### Features
-- Interpretation of given code program
-- Visualisation of program in grid, stack and interactive console
-- Program controls (load, execute, run, step, stop)
-- Breakpoints that pause program execution
-- Information about language and exapmle programs
-- Table with instructions
+## Features
+- Interpretation of Befunge93 code programs
+- Visualization of programs in a grid, stack, and interactive console
+- Program controls:
+  - Load
+  - Execute
+  - Run
+  - Step
+  - Stop
+  - Breakpoints
 - Settings:
   - Speed
-  - Pointer and breakpoint color
-  - Grid lines visibility
-- Nyan cats animations:
-  - Defualt nyan cat
-  - Gameboy nyan cat
-  - Rasta nyan cat
-  - Christmas nyan cat
-  - Mexican nyan cat
-- Multiple languages:
-  - Polish
-  - English
+  - Pointer and breakpoint colors
+  - Grid line visibility
+- Information about the language and a table with instructions
+- Support for multiple languages
+- Example programs
+- Nyan cat animations:
+  - Default Nyan Cat
+  - Gameboy Nyan Cat
+  - Rasta Nyan Cat
+  - Christmas Nyan Cat
+  - Mexican Nyan Cat
 
 <br>
 
 > [!NOTE]  
 > Room for improvements:
-> - Instruction how to use the program
+> - Instructions on how to use the webiste
+> - Editing the program directly on the grid
 > - Unlimited program grid size
-> - Editing program on the grid
-> - Zooming grid in and out
+> - Zooming the grid in and out
+> - Moving the grid by mouse
+> - Highlighting the program path
 > - Skipping over empty cells
-> - Hilighting program path
-> - Execution that is not blocking the webiste
-> - Faster execution
+> - Faster and parallel execution
+> - Challenges to help users learn the language
 
-----------------------------------
-
-### Setup
+## Setup
 Ways to run this program: 
-1. Use the [live demo](https://pasek108.github.io/BeFunge93Interpreter/)
-2. Download this repo and run index.html file
-3. Download this repo and start live server ([VSCode LiveServer Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer), Prepros preview etc.) 
+1. Use the [live version](https://pasek108.github.io/BeFunge93Interpreter/)
+2. Download this repository and run index.html file
+3. Download this repository and start live server ([VSCode LiveServer Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer), Prepros preview etc.) 
 
 To edit this program:
-- Download this repo
+- Download this repository
 - Install [Prepros](https://prepros.io)
 - Add this project in Prepros
 - Start coding
 
-----------------------------------
-
-### Acknowledgements
+## Acknowledgements
 - [Befunge - esolangs wiki](https://esolangs.org/wiki/Befunge)
 - [Befunge 93 documentation](https://github.com/catseye/Befunge-93/blob/master/doc/Befunge-93.markdown)
 - [mikescher Project Euler with Befunge](https://www.mikescher.com/blog/1/Project_Euler_with_Befunge)
@@ -109,30 +114,21 @@ To edit this program:
 
 <br>
 
-<!--
+# Details :scroll:
 
-## Details
-This section is a general description of the project required to understand how it works, the exact details are in the code or simply are the code.
-
-### User interface
-#### Main menu
-![main menu](/_for_readme/main_menu.png)
+## User interface
 
 
-----------------------------------
-
-#### Main menu
-![main menu](/_for_readme/main_menu.png)
-
-----------------------------------
-
-### Project structure
-The project directory tree looks like this:
-- :file_folder: TicTacToe (project folder)
-  - :page_facing_up: *github and prepros config*
-  - :page_facing_up: *readme file*
-  - :page_facing_up: *index.html file*
+## Project structure
+- :file_folder: Befunge93Interpreter (project folder)
+  - :page_facing_up: *github and prepros config files*
+  - :page_facing_up: *github readme file*
+  - :page_facing_up: *index.html and favicon.ico files*
   - :file_folder: _for_readme - :page_facing_up: *files for readme*
+  - :file_folder: js - :page_facing_up: *scripts used in the project*
+  - :file_folder: css
+    - :page_facing_up: *css files compiled by prepros*
+    - :file_folder: less - :page_facing_up: *less files*
   - :file_folder: language
     - :file_folder: en - :page_facing_up: *files for english language*
     - :file_folder: pl - :page_facing_up: *files for polish language*
@@ -143,42 +139,11 @@ The project directory tree looks like this:
     - :file_folder: rasta - :page_facing_up: *files for rasta nyan cat*
     - :file_folder: christmas - :page_facing_up: *files for christmas nyan cat*
     - :file_folder: mexican - :page_facing_up: *files for mexican nyan cat*
-  - :file_folder: js - :page_facing_up: *scripts used in the project*
-  - :file_folder: css
-    - :page_facing_up: *css files compiled by prepros*
-    - :file_folder: less - :page_facing_up: *less files*
 
-----------------------------------
-
-### Code organization
+## Code organization
 
 ![program diagram](/_for_readme/program_diagram.png)
 
 > [!WARNING]  
 > Classes must be loaded from bottom to the top to avoid situation when class does not exist in the time of its objects creation
 
-Menu is entry of the program.
-
-Menu creates and manages one instance of each of the classes:
-- MenuWindow (Credits)
-- Difficulty
-- TopScore
-- Game
-
-Difficulty and TopScore classes are extension of MenuWindow class which is responsible for showing and hiding menu window with transition
-
-Game class creates and manages:
-- One instance of RoadBackground class
-- Two instances of treesBackground class (left and right side)
-- One instance of classes:
-  - HealthBar
-  - EnergyBar
-  - PointsCounter
-  - GameOver
-- One instance of Player class
-- Many instances of classes:
-  - Enemy
-  - Deer
-  - HappyDeer
-
--->
