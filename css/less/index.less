@@ -23,13 +23,10 @@
   font-size: inherit;
   line-height: 1.25;
   outline: none;
-  scrollbar-color: #1a71e4;
-  scrollbar-width: thin;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
-    cursor: pointer;
   }
 
   &::-webkit-scrollbar-track {
@@ -71,7 +68,7 @@ body {
   .flex(column, center, center);
   background: radial-gradient(circle, #2e5a81 0%, #283e51 100%);
   color: whitesmoke;
-  padding: 1rem;
+  padding-top: 1rem;
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -81,23 +78,8 @@ body {
   }
 }
 
-/* -------------------------------- footer -------------------------------- */
-footer {
-  width: 100%;
-  margin-bottom: -1rem;
-  padding: 0.5rem;
-  text-align: center;
-  font-size: 0.9rem;
-
-  a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    white-space: nowrap;
-    cursor: pointer;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+main {
+  width: 82rem;
+  max-width: 100%;
+  padding: 0.5rem 1rem;
 }
