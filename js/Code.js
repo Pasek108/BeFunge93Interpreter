@@ -25,4 +25,8 @@ class Code {
   getCode() {
     return this.container.value
   }
+
+  setCode(code) {
+    this.container.value = code
+  }
 }

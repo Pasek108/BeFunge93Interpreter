@@ -53,6 +53,9 @@ class Language {
 
 class ExampleProgram {
   constructor(title, code_lines_array) {
+    let code = ""
+    code_lines_array.forEach((line) => (code += line + "\n"))
+
     const example_programs_container = document.querySelector(".example-programs")
 
     const details_container = document.createElement("details")
@@ -68,13 +71,14 @@ class ExampleProgram {
     const copy_button_container = document.createElement("div")
     copy_button_container.className = "copy"
     copy_button_container.innerHTML = `<i class="fa-regular fa-copy"></i> Copy code`
+    copy_button_container.addEventListener("click", (evt) => {
+      evt.preventDefault()
+      interpreter.code.setCode(code)
+    })
 
     summary_container.appendChild(title_container)
     summary_container.appendChild(copy_button_container)
     details_container.appendChild(summary_container)
-
-    let code = ""
-    code_lines_array.forEach((line) => (code += line + "\n"))
 
     const code_container = document.createElement("pre")
     code_container.className = "code"

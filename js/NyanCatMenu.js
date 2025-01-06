@@ -21,7 +21,11 @@ class NyanCatMenu {
 
     this.nyan_cats_buttons = this.container.querySelectorAll(".nyancat-buttons div")
     for (let i = 0; i < this.nyan_cats_buttons.length; i++) {
-      this.nyan_cats_buttons[i].addEventListener("click", () => this.loadCat(this.nyan_cats[i]))
+      this.nyan_cats_buttons[i].addEventListener("click", () => {
+        this.nyan_cats_buttons.forEach((nyan_cat_button) => (nyan_cat_button.style.backgroundColor = null))
+        this.nyan_cats_buttons[i].style.backgroundColor = "#1263b0"
+        this.loadCat(this.nyan_cats[i])
+      })
     }
   }
 
@@ -31,6 +35,7 @@ class NyanCatMenu {
     this.current_cat = null
 
     if (this.container.classList.contains("active")) {
+      this.nyan_cats_buttons.forEach((nyan_cat_button) => (nyan_cat_button.style.backgroundColor = null))
       this.clearBackground()
       this.restore_breakpoints_callback()
     } else this.clearBackground()

@@ -32,6 +32,7 @@
   "input_char": "Pobiera od użytkownika znak w konsoli i wkłada jego wartość ASCII na stos",
   "end": "Kończy działanie programu",
   "example_programs": "Przykładowe programy",
+  "help-text": "Nie znalazłem na to czasu. Sorki",
   "console": "Konsola",
   "stack": "Stos",
   "program_code": "Kod programu",

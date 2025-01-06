@@ -32,6 +32,7 @@
   "input_char": "Get ASCII character from user and push it",
   "end": "End program",
   "example_programs": "Example programs",
+  "help-text": "I just didn’t find time for it yet. Sorry",
   "console": "Console",
   "stack": "Stack",
   "program_code": "Program code",

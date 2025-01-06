@@ -24,7 +24,7 @@ class Stack {
       break
     }
 
-    this.size.innerText = this.stack.length
+    this.size.innerText = this.stack.length - 1
 
     return this.stack.pop()
   }
