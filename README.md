@@ -119,14 +119,79 @@ To edit this program:
 ## User interface
 
 ### Header section
+![header section](/_for_readme/UI/header_section.png)
+The header section, from left to right, consists of:
+- Title
+- Language change button
+- Nyan cat menu button
+- Information button 
+- Instructions button
+- Help button
+
+Clicking on the language change button will toggle between Polish and English languages. 
+
+![header nyan cat](/_for_readme/UI/header_nyan_cat.png)
+
+The Nyan cat menu has Nyan cat buttons that trigger the Nyan cat animation when clicked (check the [Nyan cats](#nyan-cats) section).
+
+![header information](/_for_readme/UI/header_information.png)
+The Information button provides brief details about the Befunge language and example programs. Users can expand the examples to view the code and click the "copy code" button to copy it into the code textarea. 
+
+![header instructions](/_for_readme/UI/header_instructions.png)
+The Instructions button lists all commands used by the Befunge-93 language with brief descriptions. 
 
 ### Program grid
+![program grid](/_for_readme/UI/program_grid.png)
+The program grid includes:
+- Settings at the top, where users can control colors, speed, and toggle the grid.
+- A grid in the middle, where users can set breakpoints and track program execution.
+- Control buttons at the bottom, where users can perform actions on the program.
+
+![program grid breakpoints](/_for_readme/UI/program_grid_breakpoints.png)
+Changing the settings has immediate effects. 
 
 ### Program data
+![program data](/_for_readme/UI/program_data.png)
+The program data section contains: 
+- A code textarea where users write their code.
+- A stack with real-time numbers representing values of the running program.
+- A console where users can read output and provide input.
 
 ### Nyan cats
+Selecting a Nyan cat from the menu triggers the animation. The grid lines are disabled for a clearer image.
+
+![nyan cat default](/_for_readme/UI/nyan_cat_default.png)
+Default Nyan cat.
+
+![nyan cat gameboy](/_for_readme/UI/nyan_cat_gameboy.png)
+Gameboy Nyan cat.
+
+![nyan cat rasta](/_for_readme/UI/nyan_cat_rasta.png)
+Rasta Nyan cat.
+
+![nyan cat christmas](/_for_readme/UI/nyan_cat_christmas.png)
+Christmas Nyan cat.
+
+![nyan cat mexican](/_for_readme/UI/nyan_cat_mexican.png)
+Mexican Nyan cat.
 
 ### Contact
+![contact](/_for_readme/UI/contact.png)
+Contact information is located in the footer. It contains details about me and possible ways to get in touch.
+
+![contact form](/_for_readme/UI/contact_form.png)
+A contact form is provided as a Google Forms iframe because it’s the best free solution I could think of.
+
+Users must provide:
+- Purpose of contact
+- Message
+- Captcha code
+
+Users can optionally provide:
+- Rating of the project
+- E-mail - in case a response is needed
+- Name - to address them properly in case of a follow-up
+
 
 ## Project structure
 - :file_folder: Befunge93Interpreter (project folder)
