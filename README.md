@@ -131,6 +131,7 @@ The header section, from left to right, consists of:
 Clicking on the language change button will toggle between Polish and English languages. 
 
 ![header nyan cat](/_for_readme/UI/header_nyan_cat.png)
+
 The Nyan cat menu has Nyan cat buttons that trigger the Nyan cat animation when clicked (check the [Nyan cats](#nyan-cats) section).
 
 ![header information](/_for_readme/UI/header_information.png)
