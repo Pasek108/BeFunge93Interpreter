@@ -5,12 +5,9 @@
   </strong>
 </p>
 
-<!-- 
 <div align="center">
-  <a href="https://www.ur.edu.pl/pl/kolegia/kolegium-nauk-przyrodniczych">
-    <img src="_for_readme/ur_banner.jpg?">
-  </a>
-</div>-->
+  <img src="_for_readme/banner.png?">
+</div>
 
 <br>
 
@@ -140,6 +137,8 @@ The Information button provides brief details about the Befunge language and exa
 ![header instructions](/_for_readme/UI/header_instructions.png)
 The Instructions button lists all commands used by the Befunge-93 language with brief descriptions. 
 
+---
+
 ### Program grid
 ![program grid](/_for_readme/UI/program_grid.png)
 The program grid includes:
@@ -150,12 +149,16 @@ The program grid includes:
 ![program grid breakpoints](/_for_readme/UI/program_grid_breakpoints.png)
 Changing the settings has immediate effects. 
 
+---
+
 ### Program data
 ![program data](/_for_readme/UI/program_data.png)
 The program data section contains: 
 - A code textarea where users write their code.
 - A stack with real-time numbers representing values of the running program.
 - A console where users can read output and provide input.
+
+---
 
 ### Nyan cats
 Selecting a Nyan cat from the menu triggers the animation. The grid lines are disabled for a clearer image.
@@ -174,6 +177,8 @@ Christmas Nyan cat.
 
 ![nyan cat mexican](/_for_readme/UI/nyan_cat_mexican.png)
 Mexican Nyan cat.
+
+---
 
 ### Contact
 ![contact](/_for_readme/UI/contact.png)
