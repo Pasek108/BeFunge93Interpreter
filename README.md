@@ -163,20 +163,20 @@ The program data section contains:
 ### Nyan cats
 Selecting a Nyan cat from the menu triggers the animation. The grid lines are disabled for a clearer image.
 
-![nyan cat default](/_for_readme/UI/nyan_cat_default.png)
-Default Nyan cat.
+- **Default Nyan cat**
+  ![nyan cat default](/_for_readme/UI/nyan_cat_default.png)
 
-![nyan cat gameboy](/_for_readme/UI/nyan_cat_gameboy.png)
-Gameboy Nyan cat.
+- **Gameboy Nyan cat**
+  ![nyan cat gameboy](/_for_readme/UI/nyan_cat_gameboy.png)
 
-![nyan cat rasta](/_for_readme/UI/nyan_cat_rasta.png)
-Rasta Nyan cat.
+- **Rasta Nyan cat**
+  ![nyan cat rasta](/_for_readme/UI/nyan_cat_rasta.png)
 
-![nyan cat christmas](/_for_readme/UI/nyan_cat_christmas.png)
-Christmas Nyan cat.
+- **Christmas Nyan cat**
+  ![nyan cat christmas](/_for_readme/UI/nyan_cat_christmas.png)
 
-![nyan cat mexican](/_for_readme/UI/nyan_cat_mexican.png)
-Mexican Nyan cat.
+- **Mexican Nyan cat**
+  ![nyan cat mexican](/_for_readme/UI/nyan_cat_mexican.png)
 
 ---
 
